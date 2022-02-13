@@ -142,6 +142,11 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         jLabel3.setText("Cidade");
 
         neighborhood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        neighborhood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                neighborhoodActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Bairro");
 
@@ -215,6 +220,11 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New document.png"))); // NOI18N
         jButtonNovo.setText("Novo");
         jButtonNovo.setPreferredSize(new java.awt.Dimension(100, 30));
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoActionPerformed(evt);
+            }
+        });
         jPanelBotoes.add(jButtonNovo);
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
@@ -227,6 +237,11 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         jButtonGravar.setText("Gravar");
         jButtonGravar.setEnabled(false);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(100, 30));
+        jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravarActionPerformed(evt);
+            }
+        });
         jPanelBotoes.add(jButtonGravar);
 
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
@@ -252,6 +267,18 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
     private void streetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_streetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_streetActionPerformed
+
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonGravarActionPerformed
+
+    private void neighborhoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neighborhoodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_neighborhoodActionPerformed
 
     /**
      * @param args the command line arguments

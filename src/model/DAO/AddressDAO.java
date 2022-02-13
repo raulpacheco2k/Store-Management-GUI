@@ -32,7 +32,7 @@ public class AddressDAO implements InterfaceDAO<Endereco>{
             this.pstm.setString(1, objeto.getCepCep());
             this.pstm.setString(2, objeto.getLogradouroCep());
             this.pstm.setInt(3, objeto.getBairro().getIdBairro());
-            this.pstm.setInt(4, objeto.getCidade().getIdCidade());
+            this.pstm.setInt(4, objeto.getCidade().getIdCidade()); 
             
             this.pstm.executeUpdate();
         } catch(Exception ex){
@@ -43,7 +43,7 @@ public class AddressDAO implements InterfaceDAO<Endereco>{
 
     @Override
     public List<Endereco> retrieve() {
-        String sqlExecutar     =   "SELECT * FROM bairro";
+        String sqlExecutar     =   "SELECT * FROM endereco";
         
         Connection conexao     = ConnectionFactory.getConnection();
 

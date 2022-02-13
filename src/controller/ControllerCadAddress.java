@@ -6,6 +6,7 @@ import model.bo.Endereco;
 import service.AddressService;
 import service.BairroService;
 import service.CidadeService;
+import view.TelaBusAddress;
 import view.TelaBusBairro;
 import view.TelaCadEndereco;
 
@@ -62,11 +63,11 @@ public final class ControllerCadAddress extends BaseController implements Action
         address.setLogradouroCep(this.screen.getStreet().getText());
         address.setBairro(
                 this.bairroService.buscar(
-                        this.screen.getNeighborhood().getSelectedIndex()
+                        this.screen.getNeighborhood().getSelectedIndex() + 1
                 ));
         address.setCidade(
                 this.cidadeService.buscar(
-                        this.screen.getNeighborhood().getSelectedIndex()
+                        this.screen.getNeighborhood().getSelectedIndex() + 1
                 ));
 
             
@@ -82,9 +83,9 @@ public final class ControllerCadAddress extends BaseController implements Action
     
     public void search() {
         codigo = 0;
-        TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-        ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-        telaBusBairro.setVisible(true);
+        TelaBusAddress telaBusAddress = new TelaBusAddress(null, true);
+        ControllerBusAddress controllerBusAddress = new ControllerBusAddress(telaBusAddress);
+        telaBusAddress.setVisible(true);
 
         if (codigo != 0) {
             Endereco endereco;
@@ -95,7 +96,7 @@ public final class ControllerCadAddress extends BaseController implements Action
             super.enableFieldsForCreation(this.screen, true);
 
             this.screen.getId().setText(endereco.getIdCep()+ "");
-            this.screen.getNeighborhood().setText(endereco.getLogradouroCep());
+            this.screen.getStreet().setText(endereco.getLogradouroCep());
 
             this.screen.getId().setEnabled(false);
         }

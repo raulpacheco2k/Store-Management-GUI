@@ -77,7 +77,7 @@ public final class ControllerCadAddress extends BaseController implements Action
             address.setIdCep(Integer.parseInt(this.screen.getId().getText()));
             this.service.atualizar(address);
         }
-        super.creationState(this.screen, true);
+        super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
     }
     

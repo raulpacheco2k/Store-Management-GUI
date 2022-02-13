@@ -20,6 +20,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        setSize(500,300);
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -118,8 +120,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         TelaCadCidade telaCadCidade = new TelaCadCidade();
         ControllerCadCidade controllerCadCidade = new ControllerCadCidade(telaCadCidade);
         telaCadCidade.setVisible(true);
-        
-        
     }//GEN-LAST:event_menuCidadesActionPerformed
 
     private void menuBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBairroActionPerformed

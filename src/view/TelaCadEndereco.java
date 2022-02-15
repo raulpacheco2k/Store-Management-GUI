@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.DAO.ConnectionFactory;
+import model.bo.Cidade;
 
 /**
  *
@@ -41,7 +42,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
             result.first();
 
             do {
-                cities.addItem(result.getString("descricaoCidade"));
+                cities.addItem(new Cidade(result));
             } while (result.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro:" + e);
@@ -112,7 +113,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         jPanelTitulo.setLayout(jPanelTituloLayout);
         jPanelTituloLayout.setHorizontalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
         );
         jPanelTituloLayout.setVerticalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,6 +127,12 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         cities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 citiesActionPerformed(evt);
+            }
+        });
+
+        zipCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zipCodeActionPerformed(evt);
             }
         });
 
@@ -158,47 +165,42 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)
+                            .addComponent(zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cities, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(neighborhood, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(neighborhood, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDadosLayout.createSequentialGroup()
-                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDadosLayout.createSequentialGroup()
-                        .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap()
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(street, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
@@ -280,6 +282,10 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         // TODO add your handling code here:
     }//GEN-LAST:event_neighborhoodActionPerformed
 
+    private void zipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_zipCodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -323,7 +329,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cities;
+    private javax.swing.JComboBox<Object> cities;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCancelar;
@@ -339,7 +345,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JPanel jPanelTitulo;
-    private javax.swing.JComboBox<String> neighborhood;
+    private javax.swing.JComboBox<Object> neighborhood;
     private javax.swing.JTextField street;
     private javax.swing.JTextField zipCode;
     // End of variables declaration//GEN-END:variables

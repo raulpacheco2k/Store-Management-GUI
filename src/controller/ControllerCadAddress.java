@@ -2,12 +2,12 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.bo.Cidade;
 import model.bo.Endereco;
 import service.AddressService;
 import service.BairroService;
 import service.CidadeService;
 import view.TelaBusAddress;
-import view.TelaBusBairro;
 import view.TelaCadEndereco;
 
 public final class ControllerCadAddress extends BaseController implements ActionListener {
@@ -63,11 +63,11 @@ public final class ControllerCadAddress extends BaseController implements Action
         address.setLogradouroCep(this.screen.getStreet().getText());
         address.setBairro(
                 this.bairroService.buscar(
-                        this.screen.getNeighborhood().getSelectedIndex() + 1
+                        this.screen.getNeighborhood().getSelectedIndex()
                 ));
         address.setCidade(
                 this.cidadeService.buscar(
-                        this.screen.getNeighborhood().getSelectedIndex() + 1
+                        ((Cidade) this.screen.getCity().getSelectedItem()).getIdCidade()
                 ));
 
             

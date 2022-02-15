@@ -1,5 +1,9 @@
 package model.bo;
-public class Cidade {
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public final class Cidade {
     private int  idCidade;
     private String descricaoCidade;
     private String ufCidade;
@@ -7,6 +11,12 @@ public class Cidade {
     public Cidade() {
     }
 
+    public Cidade(ResultSet resultSet) throws SQLException {
+        this.setIdCidade(resultSet.getInt("idCidade"));
+        this.setDescricaoCidade(resultSet.getString("descricaoCidade"));
+        this.setUfCidade(resultSet.getString("ufCidade"));
+    }
+    
     public Cidade(int idCidade, String descricaoCidade, String ufCidade) {
         this.idCidade = idCidade;
         this.descricaoCidade = descricaoCidade;

@@ -34,14 +34,15 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         Connection conexao = ConnectionFactory.getConnection();
 
         try {
+            assert conexao != null;
             PreparedStatement pstm = conexao.prepareStatement(sqlExecutar);
             ResultSet result = pstm.executeQuery();
 
             result.first();
 
-            do {
+            while (result.next()) {
                 cities.addItem(new Cidade(result));
-            } while (result.next());
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro:" + e);
         }
@@ -52,14 +53,16 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         Connection conexao = ConnectionFactory.getConnection();
 
         try {
+            assert conexao != null;
             PreparedStatement pstm = conexao.prepareStatement(sqlExecutar);
             ResultSet result = pstm.executeQuery();
 
             result.first();
 
-            do {
+            while (result.next()) {
                 neighborhood.addItem(new Bairro(result));
-            } while (result.next());
+            }
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro:" + e);
         }
@@ -95,7 +98,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Formulário de Cadastro de .....");
+        setTitle("Cadastro de Endereço");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));

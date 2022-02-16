@@ -121,7 +121,7 @@ public class TelaCadCidade extends javax.swing.JFrame implements BaseMenuButtons
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Formulário de Cadastro de .....");
+        setTitle("Cadastro de Cidade");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));

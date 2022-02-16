@@ -91,7 +91,7 @@ public class TelaCadCliente extends javax.swing.JFrame implements BaseMenuButton
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Formulário de Cadastro de Alunos");
+        setTitle("Cadastro de Clientes");
         setResizable(false);
 
         jPanelTitulo.setBackground(new java.awt.Color(204, 255, 0));

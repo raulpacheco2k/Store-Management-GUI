@@ -45,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
+        setTitle("Store Project - PDS I");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

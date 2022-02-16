@@ -46,7 +46,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
     }
 
     public void news() {
-        creationState(this.screen, false);
+        creationState(this.screen, true);
         enableFieldsForCreation(this.screen, true);
         this.screen.getId().setEnabled(false);
     }

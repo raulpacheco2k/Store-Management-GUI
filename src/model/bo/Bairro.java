@@ -1,4 +1,7 @@
 package model.bo;
+
+import java.sql.ResultSet;
+
 public class Bairro {
     
     private int idBairro;
@@ -7,6 +10,10 @@ public class Bairro {
     public Bairro() {
     }
 
+    public Bairro(ResultSet resultSet) {
+        
+    }
+    
     public Bairro(int idBairro, String descricaoBairro) {
         this.idBairro = idBairro;
         this.descricaoBairro = descricaoBairro;

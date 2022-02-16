@@ -26,6 +26,11 @@ public class TelaCadCidade extends javax.swing.JFrame implements BaseMenuButtons
         return jButtonBuscar;
     }
 
+    @Override
+    public JButton getjButtonCarregar() {
+        return null;
+    }
+
     public void setjButtonBuscar(JButton jButtonBuscar) {
         this.jButtonBuscar = jButtonBuscar;
     }

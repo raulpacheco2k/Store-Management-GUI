@@ -1,8 +1,10 @@
 package controller;
 
 import static controller.ControllerCadCidade.codigo;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import model.bo.Cidade;
 import service.CidadeService;
 import view.TelaBusCidade;
@@ -28,7 +30,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
     }
 
     @Override
-    public void actionPerformed(ActionEvent acao) {        
+    public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == screen.getjButtonNovo()) {
             news();
         } else if (acao.getSource() == screen.getjButtonCancelar()) {
@@ -41,15 +43,15 @@ public class ControllerCadCidade extends BaseController implements ActionListene
             exit();
         }
     }
-    
+
     public void news() {
         creationState(this.screen, true);
         enableFieldsForCreation(this.screen, true);
         this.screen.getjTFIdCidade().setEnabled(false);
     }
-    
+
     public void store() {
-       Cidade cidade = new Cidade();
+        Cidade cidade = new Cidade();
         cidade.setDescricaoCidade(this.screen.getjTFNomeCidade().getText());
         cidade.setUfCidade(this.screen.getjTFUF().getText());
         CidadeService cidSevice = new CidadeService();
@@ -63,7 +65,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
         creationState(this.screen, false);
         enableFieldsForCreation(this.screen, false);
     }
-    
+
     public void search() {
         codigo = 0;
         TelaBusCidade telaBusCidade = new TelaBusCidade(null, true);
@@ -83,7 +85,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
             this.screen.getjTFUF().setText(cidade.getUfCidade());
 
             this.screen.getjTFIdCidade().setEnabled(false);
-        } 
+        }
     }
 
     public void exit() {

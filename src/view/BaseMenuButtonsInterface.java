@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 public interface BaseMenuButtonsInterface {
     public JButton getjButtonBuscar();
+    public JButton getjButtonCarregar();
     public JButton getjButtonCancelar();
     public JButton getjButtonGravar();
     public JButton getjButtonNovo();

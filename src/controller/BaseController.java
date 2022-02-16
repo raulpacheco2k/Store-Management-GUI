@@ -4,16 +4,17 @@ import java.awt.Component;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
+
 import view.BaseMenuButtonsInterface;
 
-public  class BaseController  {
-    
+public class BaseController {
+
     public void cancel(BaseMenuButtonsInterface screen) {
         creationState(screen, false);
         enableFieldsForCreation(screen, false);
     }
-    
-     public void creationState(BaseMenuButtonsInterface screen, boolean estado) {
+
+    public void creationState(BaseMenuButtonsInterface screen, boolean estado) {
         screen.getjButtonNovo().setEnabled(!estado);
         screen.getjButtonCancelar().setEnabled(estado);
         screen.getjButtonGravar().setEnabled(estado);

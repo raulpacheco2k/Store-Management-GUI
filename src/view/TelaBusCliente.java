@@ -5,11 +5,13 @@
  */
 package view;
 
+import javax.swing.*;
+
 /**
  *
  * @author house
  */
-public class TelaBusCliente extends javax.swing.JDialog {
+public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButtonsInterface {
 
     /**
      * Creates new form FormModeloBuscas
@@ -182,5 +184,44 @@ public class TelaBusCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+
+    public JTable getTable(){
+        return jTable1;
+    }
+
+    @Override
+    public JButton getjButtonBuscar() {
+        return null;
+    }
+
+    @Override
+    public javax.swing.JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    @Override
+    public JButton getjButtonCancelar() {
+        return null;
+    }
+
+    @Override
+    public JButton getjButtonGravar() {
+        return null;
+    }
+
+    @Override
+    public JButton getjButtonNovo() {
+        return null;
+    }
+
+    @Override
+    public JButton getjButtonSair() {
+        return null;
+    }
+
+    @Override
+    public JPanel getjPanelDados() {
+        return null;
+    }
     // End of variables declaration//GEN-END:variables
 }

@@ -1,7 +1,6 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
 import service.AddressService;
@@ -9,6 +8,10 @@ import service.BairroService;
 import service.CidadeService;
 import view.TelaBusAddress;
 import view.TelaCadEndereco;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public final class ControllerCadAddress extends BaseController implements ActionListener {
 
@@ -36,7 +39,7 @@ public final class ControllerCadAddress extends BaseController implements Action
     }
 
     @Override
-    public void actionPerformed(ActionEvent acao) {        
+    public void actionPerformed(ActionEvent acao) {
         if (acao.getSource() == screen.getjButtonNovo()) {
             news();
         } else if (acao.getSource() == screen.getjButtonCancelar()) {
@@ -49,28 +52,28 @@ public final class ControllerCadAddress extends BaseController implements Action
             exit();
         }
     }
-    
-//    TODO: Abstrir news
+
     public void news() {
         super.creationState(this.screen, true);
         super.enableFieldsForCreation(this.screen, true);
         this.screen.getId().setEnabled(false);
     }
-    
+
     public void store() {
         Endereco address = new Endereco();
         address.setCepCep(this.screen.getZipCode().getText());
         address.setLogradouroCep(this.screen.getStreet().getText());
         address.setBairro(
                 this.bairroService.buscar(
-                        this.screen.getNeighborhood().getSelectedIndex()
+                        ((Bairro) Objects.requireNonNull(this.screen.getNeighborhood().getSelectedItem())).getIdBairro()
+
                 ));
         address.setCidade(
                 this.cidadeService.buscar(
-                        ((Cidade) this.screen.getCity().getSelectedItem()).getIdCidade()
+                        ((Cidade) Objects.requireNonNull(this.screen.getCity().getSelectedItem())).getIdCidade()
                 ));
 
-            
+
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
             this.service.salvar(address);
         } else {
@@ -80,7 +83,7 @@ public final class ControllerCadAddress extends BaseController implements Action
         super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
     }
-    
+
     public void search() {
         codigo = 0;
         TelaBusAddress telaBusAddress = new TelaBusAddress(null, true);
@@ -89,19 +92,19 @@ public final class ControllerCadAddress extends BaseController implements Action
 
         if (codigo != 0) {
             Endereco endereco;
-            
+
             endereco = this.service.buscar(codigo);
 
             super.creationState(this.screen, false);
             super.enableFieldsForCreation(this.screen, true);
 
-            this.screen.getId().setText(endereco.getIdCep()+ "");
+            this.screen.getId().setText(endereco.getIdCep() + "");
             this.screen.getStreet().setText(endereco.getLogradouroCep());
 
             this.screen.getId().setEnabled(false);
         }
     }
-    
+
     public void exit() {
         screen.dispose();
     }

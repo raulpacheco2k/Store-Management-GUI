@@ -4,9 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public final class Cidade {
-    private int  idCidade;
+    private int idCidade;
     private String descricaoCidade;
     private String ufCidade;
+    private String table;
 
     public Cidade() {
     }
@@ -16,7 +17,7 @@ public final class Cidade {
         this.setDescricaoCidade(resultSet.getString("descricaoCidade"));
         this.setUfCidade(resultSet.getString("ufCidade"));
     }
-    
+
     public Cidade(int idCidade, String descricaoCidade, String ufCidade) {
         this.idCidade = idCidade;
         this.descricaoCidade = descricaoCidade;
@@ -49,6 +50,6 @@ public final class Cidade {
 
     @Override
     public String toString() {
-        return this.getIdCidade() + "," + this.getDescricaoCidade() + ","+this.getUfCidade();
-    }    
+        return this.getIdCidade() + "," + this.getDescricaoCidade() + "," + this.getUfCidade();
+    }
 }

@@ -1,11 +1,9 @@
 package controller;
 
-import java.awt.Component;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
-
 import view.BaseMenuButtonsInterface;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class BaseController {
 

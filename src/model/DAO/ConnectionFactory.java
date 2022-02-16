@@ -14,15 +14,15 @@ public class ConnectionFactory {
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection(banco + "?verifyServerCertificate=false"
-                    + "&useSSL=false"
-                    + "&requireSSL=false"
-                    + "&USER=" + user + "&password=" + senha
-                    + "&serverTimezone=UTC");
+            return DriverManager.getConnection(mountStringConnection(banco, user, senha));
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    public static String mountStringConnection(String banco, String user, String senha) {
+        return banco + "?verifyServerCertificate=false&useSSL=false&requireSSL=false&USER=" + user + "&password=" + senha + "&serverTimezone=UTC";
     }
 
     public static void closeConnection(Connection conexao) {

@@ -2,7 +2,9 @@ package model.DAO;
 
 import model.bo.Client;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.util.List;
@@ -19,16 +21,23 @@ public class ClientDAO implements InterfaceDAO<Client>{
         PreparedStatement pstm = null;
         
         try{
+            assert conexao != null;
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getNome());
-//            pstm.setDate(2, objeto.getDtNasc());
+
+
+            java.util.Date utilDate = objeto.getDtNasc();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+
+            pstm.setDate(2, sqlDate);
             pstm.setString(3, objeto.getCpfCliente());
             pstm.setString(4, objeto.getRgCliente());
             pstm.setString(5, objeto.getFoneCliente());
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
-            pstm.setString(9, "1");
+            pstm.setString(9, "2");
             
             pstm.executeUpdate();
         } catch(Exception ex){

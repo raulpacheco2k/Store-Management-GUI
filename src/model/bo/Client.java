@@ -2,7 +2,7 @@ package model.bo;
 
 import java.util.Date;
 
-public class Client extends Pessoa{
+public class Client extends Pessoa {
     private int idCliente;
     private Date dtNasc;
     private String cpfCliente;
@@ -13,7 +13,7 @@ public class Client extends Pessoa{
     public Client() {
     }
 
-    public Client(int idClinete,Date dtNasc, String cpfCliente, String rgCliente, String foneCliente, String fone2Cliente, String nome, String email, String compleEndereco, Endereco endereco) {
+    public Client(int idClinete, Date dtNasc, String cpfCliente, String rgCliente, String foneCliente, String fone2Cliente, String nome, String email, String compleEndereco, Endereco endereco) {
         super(nome, email, compleEndereco, endereco);
         this.idCliente = idClinete;
         this.dtNasc = dtNasc;
@@ -23,16 +23,22 @@ public class Client extends Pessoa{
         this.fone2Cliente = fone2Cliente;
     }
 
-      public int getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-    }  
-    
+    }
+
     public Date getDtNasc() {
-        return dtNasc;
+        return this.dtNasc;
+    }
+
+    public java.sql.Date getDtNascToSql() {
+        java.util.Date utilDate = this.getDtNasc();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        return sqlDate;
     }
 
     public void setDtNasc(Date dtNasc) {
@@ -73,17 +79,12 @@ public class Client extends Pessoa{
 
     @Override
     public String toString() {
-        return  this.getIdCliente() + ","+
-                super.toString() + ","+
-                this.getCpfCliente() + ","+
-                this.getRgCliente() + ","+
-                this.getDtNasc() + ","+
-                this.getFoneCliente() + ","+
+        return this.getIdCliente() + "," +
+                super.toString() + "," +
+                this.getCpfCliente() + "," +
+                this.getRgCliente() + "," +
+                this.getDtNasc() + "," +
+                this.getFoneCliente() + "," +
                 this.getFone2Cliente();
     }
-
-
-    
-    
-    
 }

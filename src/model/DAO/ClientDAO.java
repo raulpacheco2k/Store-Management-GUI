@@ -24,13 +24,7 @@ public class ClientDAO implements InterfaceDAO<Client>{
             assert conexao != null;
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getNome());
-
-
-            java.util.Date utilDate = objeto.getDtNasc();
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-
-
-            pstm.setDate(2, sqlDate);
+            pstm.setDate(2, objeto.getDtNascToSql());
             pstm.setString(3, objeto.getCpfCliente());
             pstm.setString(4, objeto.getRgCliente());
             pstm.setString(5, objeto.getFoneCliente());

@@ -13,11 +13,13 @@ import view.TelaCadCidade;
 public class ControllerCadCidade extends BaseController implements ActionListener {
 
     TelaCadCidade screen;
+    CidadeService service;
     public static int codigo;
 
     @SuppressWarnings("LeakingThisInConstructor")
     public ControllerCadCidade(TelaCadCidade screen) {
         this.screen = screen;
+        this.service = new CidadeService();
 
         screen.getjButtonBuscar().addActionListener(this);
         screen.getjButtonNovo().addActionListener(this);
@@ -54,13 +56,12 @@ public class ControllerCadCidade extends BaseController implements ActionListene
         Cidade cidade = new Cidade();
         cidade.setDescricaoCidade(this.screen.getjTFNomeCidade().getText());
         cidade.setUfCidade(this.screen.getjTFUF().getText());
-        CidadeService cidSevice = new CidadeService();
 
         if (this.screen.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
-            cidSevice.salvar(cidade);
+            this.service.salvar(cidade);
         } else {
             cidade.setIdCidade(Integer.parseInt(this.screen.getjTFIdCidade().getText()));
-            cidSevice.atualizar(cidade);
+            this.service.atualizar(cidade);
         }
         creationState(this.screen, false);
         enableFieldsForCreation(this.screen, false);
@@ -74,8 +75,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
 
         if (codigo != 0) {
             Cidade cidade;
-            CidadeService cidadeService = new CidadeService();
-            cidade = cidadeService.buscar(codigo);
+            cidade = this.service.buscar(codigo);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

@@ -24,8 +24,8 @@ public final class ControllerCadBairro extends BaseController implements ActionL
         screen.getjButtonGravar().addActionListener(this);
         screen.getjButtonSair().addActionListener(this);
 
-        super.creationState(this.screen, false);
-        super.enableFieldsForCreation(this.screen, false);
+        creationState(this.screen, false);
+        enableFieldsForCreation(this.screen, false);
     }
 
     @Override
@@ -59,6 +59,7 @@ public final class ControllerCadBairro extends BaseController implements ActionL
             bairro.setIdBairro(Integer.parseInt(this.screen.getId().getText()));
             this.service.atualizar(bairro);
         }
+
         creationState(this.screen, false);
         enableFieldsForCreation(this.screen, false);
     }

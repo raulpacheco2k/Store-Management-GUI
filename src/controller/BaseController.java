@@ -26,9 +26,6 @@ public class BaseController {
             if (componenteAtual instanceof JTextField) {
                 ((JTextField) componenteAtual).setText("");
                 componenteAtual.setEnabled(estado);
-            } else if (componenteAtual instanceof JFormattedTextField) {
-                ((JFormattedTextField) componenteAtual).setText("");
-                componenteAtual.setEnabled(estado);
             } else if (componenteAtual instanceof JComboBox) {
                 ((JComboBox) componenteAtual).setSelectedIndex(0);
                 componenteAtual.setEnabled(estado);

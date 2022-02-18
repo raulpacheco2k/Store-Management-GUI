@@ -189,39 +189,32 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
         return jTable1;
     }
 
-    @Override
     public JButton getjButtonBuscar() {
         return null;
     }
 
-    @Override
     public javax.swing.JButton getjButtonCarregar() {
         return jButtonCarregar;
     }
 
-    @Override
     public JButton getjButtonCancelar() {
         return null;
     }
 
-    @Override
     public JButton getjButtonGravar() {
         return null;
     }
 
-    @Override
     public JButton getjButtonNovo() {
         return null;
     }
 
-    @Override
     public JButton getjButtonSair() {
-        return null;
+        return jButtonSair;
     }
 
-    @Override
     public JPanel getjPanelDados() {
-        return null;
+        return jPanelDados;
     }
     // End of variables declaration//GEN-END:variables
 }

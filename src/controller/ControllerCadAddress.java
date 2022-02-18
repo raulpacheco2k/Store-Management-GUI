@@ -13,13 +13,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public final class ControllerCadAddress extends BaseController implements ActionListener {
+public class ControllerCadAddress extends BaseController implements ActionListener {
 
     TelaCadEndereco screen;
     AddressService service;
     BairroService bairroService;
     CidadeService cidadeService;
     public static int codigo;
+
+    public ControllerCadAddress() {
+    }
 
     @SuppressWarnings("LeakingThisInConstructor")
     public ControllerCadAddress(TelaCadEndereco screen) {
@@ -103,6 +106,11 @@ public final class ControllerCadAddress extends BaseController implements Action
 
             this.screen.getId().setEnabled(false);
         }
+    }
+
+    public static Endereco busca(int id) {
+        AddressService addressService = new AddressService();
+        return addressService.buscar(id);
     }
 
     public void exit() {

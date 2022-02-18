@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 public class ControllerCadCliente extends BaseController implements ActionListener {
 
     TelaCadCliente screen;
+    ControllerCadAddress controllerCadAddress;
     public static int codigo;
 
     public ControllerCadCliente(TelaCadCliente screen) {
         this.screen = screen;
+        this.controllerCadAddress = new ControllerCadAddress();
 
         screen.getjButtonBuscar().addActionListener(this);
         screen.getjButtonNovo().addActionListener(this);
@@ -67,6 +69,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
+        client.setEndereco(ControllerCadAddress.busca(this.screen.getCepList()));
         client.setCompleEndereco(this.screen.getComplement().getText());
 
         ClientService clientService = new ClientService();

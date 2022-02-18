@@ -13,14 +13,33 @@ public class Client extends Pessoa {
     public Client() {
     }
 
-    public Client(int idClinete, Date dtNasc, String cpfCliente, String rgCliente, String foneCliente, String fone2Cliente, String nome, String email, String compleEndereco, Endereco endereco) {
+    public Client(
+            String nome,
+            Date dtNasc,
+            String rgCliente,
+            String cpfCliente,
+            String foneCliente,
+            String fone2Cliente,
+            String email,
+            Endereco endereco,
+            String compleEndereco
+            ) {
         super(nome, email, compleEndereco, endereco);
-        this.idCliente = idClinete;
         this.dtNasc = dtNasc;
         this.cpfCliente = cpfCliente;
         this.rgCliente = rgCliente;
         this.foneCliente = foneCliente;
         this.fone2Cliente = fone2Cliente;
+    }
+
+    @Override
+    public Endereco getEndereco() {
+        return super.getEndereco();
+    }
+
+    @Override
+    public void setEndereco(Endereco endereco) {
+        super.setEndereco(endereco);
     }
 
     public int getIdCliente() {

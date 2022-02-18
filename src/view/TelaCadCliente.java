@@ -456,6 +456,10 @@ public class TelaCadCliente extends javax.swing.JFrame implements BaseMenuButton
         return jTFComplemento;
     }
 
+    public int getCepList() {
+        return cepList.getSelectedIndex();
+    }
+
     public JFormattedTextField getDateOfBirth() {
         return jFTFDtNasc;
     }

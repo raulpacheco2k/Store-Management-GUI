@@ -50,6 +50,6 @@ public final class Cidade {
 
     @Override
     public String toString() {
-        return this.getIdCidade() + "," + this.getDescricaoCidade() + "," + this.getUfCidade();
+        return this.getDescricaoCidade();
     }
 }

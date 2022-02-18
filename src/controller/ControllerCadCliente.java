@@ -67,6 +67,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
+        client.setCompleEndereco(this.screen.getComplement().getText());
 
         ClientService clientService = new ClientService();
 
@@ -77,7 +78,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
             clientService.atualizar(client);
         }
 
-        creationState(this.screen, true);
+        creationState(this.screen, false);
         enableFieldsForCreation(this.screen, false);
     }
 

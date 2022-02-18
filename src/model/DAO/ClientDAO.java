@@ -32,7 +32,9 @@ public class ClientDAO implements InterfaceDAO<Client>{
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
             pstm.setString(9, "2");
-            
+
+            System.out.println(pstm);
+
             pstm.executeUpdate();
         } catch(Exception ex){
             ex.printStackTrace();

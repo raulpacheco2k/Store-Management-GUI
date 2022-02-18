@@ -10,7 +10,8 @@ public class ConnectionFactory {
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String banco = "jdbc:mysql://localhost:3306/bancoLoja";
     private static final String user = "root";
-    private static final String senha = "@7sBM9PGxO!g";
+    private static final String senha = "11235813";
+//    private static final String senha = "@7sBM9PGxO!g";
 
     public static Connection getConnection() {
         try {

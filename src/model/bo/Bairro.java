@@ -38,6 +38,6 @@ public class Bairro {
 
     @Override
     public String toString() {
-        return this.getIdBairro() + "," + this.getDescricaoBairro();
+        return this.getDescricaoBairro();
     }
 }

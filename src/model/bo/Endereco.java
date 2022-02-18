@@ -1,5 +1,8 @@
 package model.bo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Endereco {
   private int idCep;
   private String cepCep;
@@ -8,6 +11,12 @@ public class Endereco {
   private Cidade cidade;
 
     public Endereco() {
+    }
+
+    public Endereco(ResultSet resultSet) throws SQLException {
+        this.setIdCep(resultSet.getInt("idcep"));
+        this.setCepCep(resultSet.getString("cepCep"));
+        this.setLogradouroCep(resultSet.getString("logradouroCep"));
     }
 
     public Endereco(int idCep, String cepCep, String logradouroCep, Bairro bairro, Cidade cidade) {
@@ -60,13 +69,6 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return  this.getIdCep() + ","+
-                this.getLogradouroCep()+ ","+
-                this.getCepCep()+ ","+
-                this.getCidade().getDescricaoCidade()+ ","+
-                this.getBairro().getDescricaoBairro() + ",";
+        return this.getCepCep();
     }
-  
-  
-  
 }

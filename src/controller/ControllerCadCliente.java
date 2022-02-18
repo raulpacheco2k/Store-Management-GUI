@@ -1,6 +1,7 @@
 package controller;
 
 import model.bo.Client;
+import model.bo.Endereco;
 import service.ClientService;
 import view.TelaBusCliente;
 import view.TelaCadCliente;
@@ -69,7 +70,10 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
-        client.setEndereco(ControllerCadAddress.busca(this.screen.getCepList()));
+
+        int endereco = this.screen.getCepList().getIdCep();
+
+        client.setEndereco(endereco);
         client.setCompleEndereco(this.screen.getComplement().getText());
 
         ClientService clientService = new ClientService();

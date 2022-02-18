@@ -31,7 +31,7 @@ public class ClientDAO implements InterfaceDAO<Client>{
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
-            pstm.setString(9, "2");
+            pstm.setInt(9, objeto.idEndereco);
 
             System.out.println(pstm);
 

@@ -9,6 +9,8 @@ public class Client extends Pessoa {
     private String rgCliente;
     private String foneCliente;
     private String fone2Cliente;
+    public int idEndereco;
+
 
     public Client() {
     }
@@ -32,14 +34,17 @@ public class Client extends Pessoa {
         this.fone2Cliente = fone2Cliente;
     }
 
-    @Override
-    public Endereco getEndereco() {
-        return super.getEndereco();
+    public int getCep() {
+        return super.getEndereco().getIdCep();
     }
 
     @Override
     public void setEndereco(Endereco endereco) {
         super.setEndereco(endereco);
+    }
+
+    public void setEndereco(int id) {
+        this.idEndereco = id;
     }
 
     public int getIdCliente() {

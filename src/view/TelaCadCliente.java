@@ -319,7 +319,7 @@ public class TelaCadCliente extends javax.swing.JFrame implements BaseMenuButton
         jPanelBotoes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelBotoes.setPreferredSize(new java.awt.Dimension(533, 50));
 
-        jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New document.png"))); // NOI18N
+        // jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/New document.png"))); // NOI18N
         jButtonNovo.setText("Novo");
         jButtonNovo.setPreferredSize(new java.awt.Dimension(100, 30));
         jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -329,24 +329,24 @@ public class TelaCadCliente extends javax.swing.JFrame implements BaseMenuButton
         });
         jPanelBotoes.add(jButtonNovo);
 
-        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
+        // jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setEnabled(false);
         jButtonCancelar.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanelBotoes.add(jButtonCancelar);
 
-        jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/OK.png"))); // NOI18N
+        // jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/OK.png"))); // NOI18N
         jButtonGravar.setText("Gravar");
         jButtonGravar.setEnabled(false);
         jButtonGravar.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanelBotoes.add(jButtonGravar);
 
-        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        // jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanelBotoes.add(jButtonBuscar);
 
-        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
+        // jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanelBotoes.add(jButtonSair);

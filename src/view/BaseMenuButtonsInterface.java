@@ -1,7 +1,6 @@
 package view;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public interface BaseMenuButtonsInterface {
     public JButton getjButtonBuscar();

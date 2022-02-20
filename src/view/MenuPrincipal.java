@@ -5,10 +5,7 @@
  */
 package view;
 
-import controller.ControllerCadAddress;
-import controller.ControllerCadBairro;
-import controller.ControllerCadCidade;
-import controller.ControllerCadCliente;
+import controller.*;
 
 /**
  * @author house
@@ -45,7 +42,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
-        setTitle("Store Project - PDS I");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +85,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuFornecedor.setText("Fornecedor");
+        menuFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFornecedorActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuFornecedor);
 
         jMenuBar1.add(jMenu2);
@@ -139,6 +140,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControllerCadAddress controllerCadAddress = new ControllerCadAddress(telaCadEndereco);
         telaCadEndereco.setVisible(true);
     }//GEN-LAST:event_menuEnderecoActionPerformed
+
+    private void menuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFornecedorActionPerformed
+        TelaCadFornecedor telaCadFornecedor= new TelaCadFornecedor();
+        ControllerCadFornecedor controllerCadFornecedor = new ControllerCadFornecedor(telaCadFornecedor);
+        telaCadFornecedor.setVisible(true);
+    }//GEN-LAST:event_menuFornecedorActionPerformed
 
     /**
      * @param args the command line arguments

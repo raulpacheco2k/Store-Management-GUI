@@ -10,9 +10,8 @@ public class Fornecedor extends Pessoa {
     public Fornecedor() {
     }
 
-    public Fornecedor(int idFornecedor, String razaoSocialFornecedor, String cnpjFornecedor, String inscEstadualFornecedor, String nome, String email, String compleEndereco, Endereco endereco) {
+    public Fornecedor(String razaoSocialFornecedor, String cnpjFornecedor, String inscEstadualFornecedor, String nome, String email, String compleEndereco, Endereco endereco) {
         super(nome, email, compleEndereco, endereco);
-        this.idFornecedor = idFornecedor;
         this.razaoSocialFornecedor = razaoSocialFornecedor;
         this.cnpjFornecedor = cnpjFornecedor;
         this.inscEstadualFornecedor = inscEstadualFornecedor;
@@ -50,21 +49,20 @@ public class Fornecedor extends Pessoa {
         this.inscEstadualFornecedor = inscEstadualFornecedor;
     }
 
-    
     @Override
     public String toString() {
-        return  this.getIdFornecedor()+ "," +
-                this.getNome()+ "," +
-                this.getRazaoSocialFornecedor()+ "," +
-                this.getCnpjFornecedor()+ "," +
-                this.getInscEstadualFornecedor()+ "," +
-                this.getEmail()+ "," +
-                this.getEndereco().getCidade()+ "," +
-                this.getEndereco().getBairro()+ "," +
-                this.getEndereco().getCepCep()+ "," +
-                this.getEndereco().getLogradouroCep()+
+        return this.getIdFornecedor() + "," +
+                this.getNome() + "," +
+                this.getRazaoSocialFornecedor() + "," +
+                this.getCnpjFornecedor() + "," +
+                this.getInscEstadualFornecedor() + "," +
+                this.getEmail() + "," +
+                this.getEndereco().getCidade() + "," +
+                this.getEndereco().getBairro() + "," +
+                this.getEndereco().getCepCep() + "," +
+                this.getEndereco().getLogradouroCep() +
                 this.getCompleEndereco();
-     
-}
+
+    }
 
 }

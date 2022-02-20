@@ -1,13 +1,14 @@
 package service;
 
-import java.util.List;
 import model.DAO.AddressDAO;
 import model.bo.Endereco;
+
+import java.util.List;
 
 public class AddressService implements InterfaceService<Endereco> {
 
     @Override
-    public  void salvar(Endereco objeto) {
+    public void salvar(Endereco objeto) {
         AddressDAO address = new AddressDAO();
         address.create(objeto);
     }

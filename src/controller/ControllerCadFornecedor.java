@@ -1,17 +1,21 @@
 package controller;
 
+import model.bo.Bairro;
 import model.bo.Endereco;
 import model.bo.Fornecedor;
+import service.AddressService;
 import service.FornecedorService;
 import view.TelaCadFornecedor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class ControllerCadFornecedor extends BaseController implements ActionListener {
 
     TelaCadFornecedor screen;
     FornecedorService service;
+    AddressService addressService;
     public static int codigo;
 
     public ControllerCadFornecedor() {
@@ -21,6 +25,7 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
     public ControllerCadFornecedor(TelaCadFornecedor screen) {
         this.screen = screen;
         this.service = new FornecedorService();
+        this.addressService = new AddressService();
 
         screen.getjButtonBuscar().addActionListener(this);
         screen.getjButtonNovo().addActionListener(this);
@@ -62,10 +67,11 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
                 this.screen.getNomeFantasia().getText(),
                 this.screen.getEmail().getText(),
                 this.screen.getCompleto().getText(),
-                (Endereco) new Endereco()
-        );
+                this.addressService.buscar(
+                        ((Endereco) Objects.requireNonNull(this.screen.getCep().getSelectedItem())).getIdCep()
 
-        // address.setCidade(this.cidadeService.buscar(((Cidade) Objects.requireNonNull(this.screen.getCity().getSelectedItem())).getIdCidade()));
+                )
+        );
 
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
@@ -87,7 +93,7 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
         if (codigo != 0) {
             Endereco endereco;
 
-           // endereco = this.service.buscar(codigo);
+            // endereco = this.service.buscar(codigo);
 
             super.creationState(this.screen, false);
             super.enableFieldsForCreation(this.screen, true);

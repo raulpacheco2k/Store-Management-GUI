@@ -31,6 +31,8 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
             this.pstm.setString(6, objeto.getCompleEndereco());
             this.pstm.setInt(7, objeto.getEndereco().getIdCep());
 
+            System.out.println(this.pstm);
+
             this.pstm.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

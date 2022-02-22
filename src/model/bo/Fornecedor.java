@@ -49,6 +49,8 @@ public class Fornecedor extends Pessoa {
         this.inscEstadualFornecedor = inscEstadualFornecedor;
     }
 
+
+
     @Override
     public String toString() {
         return this.getIdFornecedor() + "," +

@@ -1,125 +1,111 @@
 package model.DAO;
 
-import java.util.List;
 import model.bo.Bairro;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
-public class BairroDAO implements InterfaceDAO<Bairro>{
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BairroDAO extends GenericDAO implements InterfaceDAO<Bairro> {
     Bairro model = new Bairro();
 
     @Override
     public void create(Bairro objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        
-        try{
-            pstm = conexao.prepareStatement(model.insert());
-            pstm.setString(1, objeto.getDescricaoBairro());
-            pstm.executeUpdate();
-        } catch(Exception ex){
+        try {
+            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement.setString(1, objeto.getDescricaoBairro());
+            super.preparedStatement.executeUpdate();
+        } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement);
         }
-        ConnectionFactory.closeConnection(conexao, pstm);
+    }
+
+    public Bairro setValues(Bairro model) throws SQLException {
+        model.setIdBairro(super.resultSet.getInt("idbairro"));
+        model.setDescricaoBairro(super.resultSet.getString("descricaoBairro"));
+        return model;
     }
 
     @Override
     public List<Bairro> retrieve() {
-        Connection conexao     = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        ResultSet rst          = null;
         List<Bairro> bairros = new ArrayList<>();
-        
-        try{
-            pstm = conexao.prepareStatement(model.findAll());
-            rst = pstm.executeQuery();            
-            
-            while(rst.next()){
+
+        try {
+            super.preparedStatement = super.sqlCode(model.findAll());
+            super.resultSet = super.preparedStatement.executeQuery();
+
+            while (super.resultSet.next()) {
                 Bairro bairro = new Bairro();
-                bairro.setIdBairro(rst.getInt("idbairro"));
-                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
+                this.setValues(bairro);
                 bairros.add(bairro);
             }
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return bairros;       
-        } catch(Exception ex){
+            return bairros;
+        } catch (Exception ex) {
             ex.printStackTrace();
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
             return null;
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement, super.resultSet);
         }
     }
+
     @Override
     public Bairro retrieve(int codigo) {
-        
-        Connection conexao     = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        ResultSet rst          = null;
-        
-        try{
-            pstm = conexao.prepareStatement(model.findById());
-            pstm.setInt(1, codigo);
-            
-            rst = pstm.executeQuery();  
+        try {
+            super.preparedStatement = super.sqlCode(model.findById());
+            super.preparedStatement.setInt(1, codigo);
+
+            super.resultSet = super.preparedStatement.executeQuery();
             Bairro bairro = new Bairro();
-            while(rst.next()){
-                bairro.setIdBairro(rst.getInt("idbairro"));
-                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
+            while (super.resultSet.next()) {
+                this.setValues(bairro);
             }
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
-            return bairro; 
-        } catch(Exception ex){
+            return bairro;
+        } catch (Exception ex) {
             ex.printStackTrace();
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
             return null;
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement, super.resultSet);
         }
-          
     }
 
     @Override
     public Bairro retrieve(String descricao) {
-        Connection conexao     = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        ResultSet rst          = null;
-        
-        try{
-            pstm = conexao.prepareStatement(model.findByField("descricaoBairro"));
-            pstm.setString(1, descricao);
-            rst = pstm.executeQuery();  
+        try {
+            super.preparedStatement = super.sqlCode(model.findByField("descricaoBairro"));
+            super.preparedStatement.setString(1, descricao);
+            super.resultSet = super.preparedStatement.executeQuery();
             Bairro bairro = new Bairro();
-            
-            while(rst.next()){
-                bairro.setIdBairro(rst.getInt("idbairro"));
-                bairro.setDescricaoBairro(rst.getString("descricaoBairro"));
-            }
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
 
-            return bairro; 
-        } catch(Exception ex){
+            while (super.resultSet.next()) {
+                this.setValues(bairro);
+            }
+            return bairro;
+        } catch (Exception ex) {
             ex.printStackTrace();
-            ConnectionFactory.closeConnection(conexao, pstm, rst);
             return null;
-        }  
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement, super.resultSet);
+        }
     }
 
     @Override
     public void update(Bairro objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        try{
-            pstm = conexao.prepareStatement(model.update());
-            pstm.setString(1, objeto.getDescricaoBairro());
-            pstm.setInt(2, objeto.getIdBairro());
-            pstm.executeUpdate();
-        }catch(Exception ex){
+        super.connection = ConnectionFactory.getConnection();
+        try {
+            super.preparedStatement = super.sqlCode(model.update());
+            super.preparedStatement.setString(1, objeto.getDescricaoBairro());
+            super.preparedStatement.setInt(2, objeto.getIdBairro());
+            super.preparedStatement.executeUpdate();
+        } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement);
         }
-        ConnectionFactory.closeConnection(conexao, pstm);
     }
 
     @Override
     public void delete(Bairro objeto) {
     }
-    
 }

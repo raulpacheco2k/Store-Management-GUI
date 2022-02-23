@@ -3,19 +3,22 @@ package model.bo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Bairro {
+public class Bairro extends Model {
     private int idBairro;
     private String descricaoBairro;
 
     public Bairro() {
+        super("bairro");
     }
 
     public Bairro(ResultSet resultSet) throws SQLException {
+        super("bairro");
         this.setIdBairro(resultSet.getInt("idBairro"));
         this.setDescricaoBairro(resultSet.getString("descricaoBairro"));
     }
 
     public Bairro(int idBairro, String descricaoBairro) {
+        super("bairro");
         this.idBairro = idBairro;
         this.descricaoBairro = descricaoBairro;
     }
@@ -39,5 +42,35 @@ public class Bairro {
     @Override
     public String toString() {
         return this.getDescricaoBairro();
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + getTable() + " (descricaoBairro) VALUES(?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idbairro, descricaoBairro FROM " + getTable();
+    }
+
+    @Override
+    public String findById() {
+        return " SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE " + getTable() + ".idbairro = ?";
+    }
+
+    @Override
+    public String findByField(String field) {
+        return "SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE " + getTable() + "." + field + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + getTable() + " SET descricaoBairro = ? WHERE " + getTable() + ".idbairro = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

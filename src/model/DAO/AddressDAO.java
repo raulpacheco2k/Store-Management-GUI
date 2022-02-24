@@ -74,7 +74,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
 
     @Override
     public Endereco retrieve(int codigo) {
-        String sqlExecutar = " SELECT * FROM cidade WHERE cidade.idcidade = ?";
+        String sqlExecutar = " SELECT * FROM endereco WHERE endereco.idcep = ?";
         Connection conexao = ConnectionFactory.getConnection();
 
         try {

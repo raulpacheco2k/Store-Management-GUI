@@ -8,6 +8,8 @@
 
 package model.DAO;
 
+import model.bo.Model;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,4 +28,7 @@ public abstract class GenericDAO<T extends Model> {
     public PreparedStatement sqlCode(String string) throws SQLException {
         return this.connection.prepareStatement(string);
     }
+
+    public abstract T setValues(T model) throws SQLException;
+
 }

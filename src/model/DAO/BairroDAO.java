@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BairroDAO extends GenericDAO implements InterfaceDAO<Bairro> {
+public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro> {
     Bairro model = new Bairro();
 
     @Override

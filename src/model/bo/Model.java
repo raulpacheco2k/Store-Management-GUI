@@ -11,8 +11,9 @@ package model.bo;
 public abstract class Model implements HasTable {
     private String table;
 
-    public Model(String table) {
+    public Model setTable(String table) {
         this.table = table;
+        return this;
     }
 
     public String getTable() {

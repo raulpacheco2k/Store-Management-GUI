@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class GenericDAO {
+public abstract class GenericDAO<T extends Model> {
 
     PreparedStatement preparedStatement;
     Connection connection;

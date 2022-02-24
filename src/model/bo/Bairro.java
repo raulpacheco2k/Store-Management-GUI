@@ -8,19 +8,19 @@ public class Bairro extends Model {
     private String descricaoBairro;
 
     public Bairro() {
-        super("bairro");
+        setTable("bairro");
     }
 
     public Bairro(ResultSet resultSet) throws SQLException {
-        super("bairro");
         this.setIdBairro(resultSet.getInt("idBairro"));
         this.setDescricaoBairro(resultSet.getString("descricaoBairro"));
+        setTable("bairro");
     }
 
     public Bairro(int idBairro, String descricaoBairro) {
-        super("bairro");
         this.idBairro = idBairro;
         this.descricaoBairro = descricaoBairro;
+        setTable("bairro");
     }
 
     public int getIdBairro() {

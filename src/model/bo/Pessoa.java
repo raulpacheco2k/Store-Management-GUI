@@ -1,5 +1,5 @@
 package model.bo;
-public abstract class Pessoa {
+public abstract class Pessoa extends Model {
     private String nome;
     private String email;
     private String compleEndereco;

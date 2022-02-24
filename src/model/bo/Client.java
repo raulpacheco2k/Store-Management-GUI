@@ -111,4 +111,34 @@ public class Client extends Pessoa {
                 this.getFoneCliente() + "," +
                 this.getFone2Cliente();
     }
+
+    @Override
+    public String insert() {
+        return null;
+    }
+
+    @Override
+    public String findAll() {
+        return null;
+    }
+
+    @Override
+    public String findById() {
+        return null;
+    }
+
+    @Override
+    public String findByField(String string) {
+        return null;
+    }
+
+    @Override
+    public String update() {
+        return null;
+    }
+
+    @Override
+    public String delete() {
+        return null;
+    }
 }

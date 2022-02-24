@@ -8,6 +8,7 @@ public class Fornecedor extends Pessoa {
     private String inscEstadualFornecedor;
 
     public Fornecedor() {
+        setTable("fornecedor");
     }
 
     public Fornecedor(String razaoSocialFornecedor, String cnpjFornecedor, String inscEstadualFornecedor, String nome, String email, String compleEndereco, Endereco endereco) {
@@ -15,6 +16,7 @@ public class Fornecedor extends Pessoa {
         this.razaoSocialFornecedor = razaoSocialFornecedor;
         this.cnpjFornecedor = cnpjFornecedor;
         this.inscEstadualFornecedor = inscEstadualFornecedor;
+        setTable("fornecedor");
     }
 
     public int getIdFornecedor() {
@@ -50,7 +52,6 @@ public class Fornecedor extends Pessoa {
     }
 
 
-
     @Override
     public String toString() {
         return this.getIdFornecedor() + "," +
@@ -67,4 +68,33 @@ public class Fornecedor extends Pessoa {
 
     }
 
+    @Override
+    public String insert() {
+        return "INSERT INTO fornecedor (razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable() + " WHERE idfornecedor = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable() + " WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return null;
+    }
+
+    @Override
+    public String delete() {
+        return null;
+    }
 }

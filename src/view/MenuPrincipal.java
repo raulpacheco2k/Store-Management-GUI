@@ -105,12 +105,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pack();
@@ -142,7 +142,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuEnderecoActionPerformed
 
     private void menuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFornecedorActionPerformed
-        TelaCadFornecedor telaCadFornecedor= new TelaCadFornecedor();
+        TelaCadFornecedor telaCadFornecedor = new TelaCadFornecedor();
         ControllerCadFornecedor controllerCadFornecedor = new ControllerCadFornecedor(telaCadFornecedor);
         telaCadFornecedor.setVisible(true);
     }//GEN-LAST:event_menuFornecedorActionPerformed

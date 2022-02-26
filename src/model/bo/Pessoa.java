@@ -1,4 +1,5 @@
 package model.bo;
+
 public abstract class Pessoa extends Model {
     private String nome;
     private String email;
@@ -15,7 +16,7 @@ public abstract class Pessoa extends Model {
         this.endereco = endereco;
     }
 
-    
+
     public String getNome() {
         return nome;
     }
@@ -41,7 +42,7 @@ public abstract class Pessoa extends Model {
     }
 
     public Endereco getEndereco() {
-        return endereco;
+        return this.endereco;
     }
 
     public void setEndereco(Endereco endereco) {
@@ -50,15 +51,14 @@ public abstract class Pessoa extends Model {
 
     @Override
     public String toString() {
-        return  this.getNome() + ","+
-                this.getEmail() + ","+
-                this.getEndereco().getCepCep() + ","+
-                this.getEndereco().getBairro()+ ","+
-                this.getEndereco().getCidade()+ ","+
-                this.getEndereco().getLogradouroCep()+ ","+
-                this.getCompleEndereco() ;
+        return this.getNome() + "," +
+                this.getEmail() + "," +
+                this.getEndereco().getCepCep() + "," +
+                this.getEndereco().getBairro() + "," +
+                this.getEndereco().getCidade() + "," +
+                this.getEndereco().getLogradouroCep() + "," +
+                this.getCompleEndereco();
     }
-    
-    
-    
+
+
 }

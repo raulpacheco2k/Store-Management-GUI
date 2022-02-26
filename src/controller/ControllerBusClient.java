@@ -1,12 +1,12 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.table.DefaultTableModel;
-
 import model.bo.Client;
 import service.ClientService;
 import view.TelaBusCliente;
+
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ControllerBusClient implements ActionListener {
 

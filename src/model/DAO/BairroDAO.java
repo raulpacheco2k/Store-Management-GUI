@@ -9,23 +9,26 @@ import java.util.List;
 public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro> {
     Bairro model = new Bairro();
 
+    public void setValuesForRetrieve(Bairro model) throws SQLException {
+        model.setIdBairro(super.resultSet.getInt("idbairro"));
+        model.setDescricaoBairro(super.resultSet.getString("descricaoBairro"));
+    }
+
+    @Override
+    public void setValuesForStore(Bairro model) throws SQLException {
+        super.preparedStatement.setString(1, model.getDescricaoBairro());
+    }
+
     @Override
     public void create(Bairro objeto) {
         try {
             super.preparedStatement = super.sqlCode(model.insert());
-            super.preparedStatement.setString(1, objeto.getDescricaoBairro());
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(super.connection, super.preparedStatement);
         }
-    }
-
-    public Bairro setValues(Bairro model) throws SQLException {
-        model.setIdBairro(super.resultSet.getInt("idbairro"));
-        model.setDescricaoBairro(super.resultSet.getString("descricaoBairro"));
-        return model;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
 
             while (super.resultSet.next()) {
                 Bairro bairro = new Bairro();
-                this.setValues(bairro);
+                this.setValuesForRetrieve(bairro);
                 bairros.add(bairro);
             }
             return bairros;
@@ -59,7 +62,7 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
             super.resultSet = super.preparedStatement.executeQuery();
             Bairro bairro = new Bairro();
             while (super.resultSet.next()) {
-                this.setValues(bairro);
+                this.setValuesForRetrieve(bairro);
             }
             return bairro;
         } catch (Exception ex) {
@@ -79,7 +82,7 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
             Bairro bairro = new Bairro();
 
             while (super.resultSet.next()) {
-                this.setValues(bairro);
+                this.setValuesForRetrieve(bairro);
             }
             return bairro;
         } catch (Exception ex) {

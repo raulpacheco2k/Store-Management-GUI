@@ -1,6 +1,5 @@
 package controller;
 
-import model.bo.Bairro;
 import model.bo.Endereco;
 import model.bo.Fornecedor;
 import service.AddressService;
@@ -59,7 +58,6 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
     }
 
     public void store() {
-        System.out.println(this.screen.getCep().getSelectedIndex());
         Fornecedor fornecedor = new Fornecedor(
                 this.screen.getRazaoSocial().getText(),
                 this.screen.getCnpj().getText(),
@@ -67,12 +65,8 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
                 this.screen.getNomeFantasia().getText(),
                 this.screen.getEmail().getText(),
                 this.screen.getCompleto().getText(),
-                this.addressService.buscar(
-                        ((Endereco) Objects.requireNonNull(this.screen.getCep().getSelectedItem())).getIdCep()
-
-                )
+                this.addressService.buscar(((Endereco) Objects.requireNonNull(this.screen.getCep().getSelectedItem())).getIdCep())
         );
-
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
             this.service.salvar(fornecedor);

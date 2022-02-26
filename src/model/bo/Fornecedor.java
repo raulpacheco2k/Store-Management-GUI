@@ -6,6 +6,7 @@ public class Fornecedor extends Pessoa {
     private String razaoSocialFornecedor;
     private String cnpjFornecedor;
     private String inscEstadualFornecedor;
+    public int idEndereco;
 
     public Fornecedor() {
         setTable("fornecedor");
@@ -16,6 +17,7 @@ public class Fornecedor extends Pessoa {
         this.razaoSocialFornecedor = razaoSocialFornecedor;
         this.cnpjFornecedor = cnpjFornecedor;
         this.inscEstadualFornecedor = inscEstadualFornecedor;
+        this.idEndereco = endereco.getIdCep();
         setTable("fornecedor");
     }
 
@@ -51,6 +53,9 @@ public class Fornecedor extends Pessoa {
         this.inscEstadualFornecedor = inscEstadualFornecedor;
     }
 
+    public Endereco getEndereco() {
+        return super.getEndereco();
+    }
 
     @Override
     public String toString() {
@@ -65,7 +70,6 @@ public class Fornecedor extends Pessoa {
                 this.getEndereco().getCepCep() + "," +
                 this.getEndereco().getLogradouroCep() +
                 this.getCompleEndereco();
-
     }
 
     @Override
@@ -90,7 +94,7 @@ public class Fornecedor extends Pessoa {
 
     @Override
     public String update() {
-        return null;
+        return "UPDATE " + getTable() + " SET razaoSocialFornecedor = ?, nomeFantasiaFornecedor = ?, cnpjFornecedor = ?, inscEstadualFornecedor = ?, emailFornecedor = ?, compleEnderecofornecedor = ?, endereco_idcep = ? WHERE idfornecedor = ?";
     }
 
     @Override

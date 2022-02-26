@@ -1,7 +1,6 @@
 package controller;
 
 import model.bo.Client;
-import model.bo.Endereco;
 import service.ClientService;
 import view.TelaBusCliente;
 import view.TelaCadCliente;

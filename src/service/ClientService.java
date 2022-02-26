@@ -1,13 +1,14 @@
 package service;
 
-import java.util.List;
 import model.DAO.ClientDAO;
 import model.bo.Client;
+
+import java.util.List;
 
 public class ClientService implements InterfaceService<Client> {
 
     @Override
-    public  void salvar(Client objeto) {
+    public void salvar(Client objeto) {
         ClientDAO ClientDAO = new ClientDAO();
         ClientDAO.create(objeto);
     }

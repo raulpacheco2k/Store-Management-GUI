@@ -1,8 +1,9 @@
 package service;
 
-import java.util.List;
 import model.DAO.BairroDAO;
 import model.bo.Bairro;
+
+import java.util.List;
 
 public class BairroService implements InterfaceService<Bairro> {
 

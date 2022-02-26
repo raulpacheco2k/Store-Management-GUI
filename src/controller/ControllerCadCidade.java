@@ -1,14 +1,12 @@
 package controller;
 
-import static controller.ControllerCadCidade.codigo;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import model.bo.Cidade;
 import service.CidadeService;
 import view.TelaBusCidade;
 import view.TelaCadCidade;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ControllerCadCidade extends BaseController implements ActionListener {
 

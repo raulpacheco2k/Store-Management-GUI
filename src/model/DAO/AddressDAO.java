@@ -1,13 +1,13 @@
 package model.DAO;
 
-import java.util.List;
-
 import model.bo.Endereco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddressDAO implements InterfaceDAO<Endereco> {
 
@@ -97,6 +97,19 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
         }
     }
 
+    private Endereco getEndereco(Connection conexao) throws SQLException {
+        this.queryResult = this.pstm.executeQuery();
+        Endereco address = new Endereco();
+        while (this.queryResult.next()) {
+            address.setIdCep(this.queryResult.getInt("idcep"));
+            address.setCepCep(this.queryResult.getString("cepCep"));
+            address.setBairro(this.BairroDAO.retrieve(this.queryResult.getInt("bairro_idbairro")));
+            address.setCidade(this.CidadeDAO.retrieve(this.queryResult.getInt("cidade_idcidade")));
+        }
+        ConnectionFactory.closeConnection(conexao, this.pstm, this.queryResult);
+        return address;
+    }
+
     @Override
     public Endereco retrieve(String descricao) {
         String sqlExecutar = " SELECT idcidade, "
@@ -109,19 +122,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
         try {
             this.pstm = conexao.prepareStatement(sqlExecutar);
             this.pstm.setString(1, descricao);
-            this.queryResult = this.pstm.executeQuery();
-            Endereco address = new Endereco();
-
-            while (this.queryResult.next()) {
-                address.setIdCep(this.queryResult.getInt("idcep"));
-                address.setCepCep(this.queryResult.getString("cepCep"));
-                address.setBairro(this.BairroDAO.retrieve(this.queryResult.getInt("bairro_idbairro")));
-                address.setCidade(this.CidadeDAO.retrieve(this.queryResult.getInt("cidade_idcidade")));
-            }
-
-            ConnectionFactory.closeConnection(conexao, this.pstm, this.queryResult);
-
-            return address;
+            return getEndereco(conexao);
         } catch (Exception ex) {
             ex.printStackTrace();
             ConnectionFactory.closeConnection(conexao, this.pstm, this.queryResult);

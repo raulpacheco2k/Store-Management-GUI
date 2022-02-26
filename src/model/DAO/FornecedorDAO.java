@@ -11,38 +11,40 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
     Fornecedor model = new Fornecedor();
     AddressService addressService = new AddressService();
 
-    public FornecedorDAO() {
-    }
-
-    @Override
-    public void create(Fornecedor model) {
-        try {
-            super.preparedStatement = super.sqlCode(model.insert());
-            super.preparedStatement.setString(1, model.getRazaoSocialFornecedor());
-            super.preparedStatement.setString(2, model.getNome());
-            super.preparedStatement.setString(3, model.getCnpjFornecedor());
-            super.preparedStatement.setString(4, model.getInscEstadualFornecedor());
-            super.preparedStatement.setString(5, model.getEmail());
-            super.preparedStatement.setString(6, model.getCompleEndereco());
-            super.preparedStatement.setInt(7, model.getEndereco().getIdCep());
-            super.preparedStatement.executeUpdate();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(super.connection, super.preparedStatement);
-        }
-    }
-
-    public Fornecedor setValues(Fornecedor model) throws SQLException {
+    public void setValuesForRetrieve(Fornecedor model) throws SQLException {
         model.setIdFornecedor(super.resultSet.getInt("idFornecedor"));
-        model.setRazaoSocialFornecedor(super.resultSet.getString("RazaoSocialFornecedor"));
+        model.setRazaoSocialFornecedor(super.resultSet.getString("razaoSocialFornecedor"));
         model.setNome(super.resultSet.getString("nomeFantasiaFornecedor"));
         model.setCnpjFornecedor(super.resultSet.getString("cnpjFornecedor"));
         model.setInscEstadualFornecedor(super.resultSet.getString("inscEstadualFornecedor"));
         model.setEmail(super.resultSet.getString("emailFornecedor"));
         model.setCompleEndereco(super.resultSet.getString("compleEnderecofornecedor"));
         model.setEndereco(addressService.buscar(super.resultSet.getInt("inscEstadualFornecedor")));
-        return model;
+    }
+
+    @Override
+    public void setValuesForStore(Fornecedor model) throws SQLException {
+        super.preparedStatement.setString(1, model.getRazaoSocialFornecedor());
+        super.preparedStatement.setString(2, model.getNome());
+        super.preparedStatement.setString(3, model.getCnpjFornecedor());
+        super.preparedStatement.setString(4, model.getInscEstadualFornecedor());
+        super.preparedStatement.setString(5, model.getEmail());
+        super.preparedStatement.setString(6, model.getCompleEndereco());
+        super.preparedStatement.setInt(7, model.idEndereco);
+    }
+
+    @Override
+    public void create(Fornecedor model) {
+        try {
+            System.out.println(model.getRazaoSocialFornecedor());
+            super.preparedStatement = super.sqlCode(model.insert());
+            this.setValuesForStore(model);
+            super.preparedStatement.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(super.connection, super.preparedStatement);
+        }
     }
 
     @Override
@@ -55,9 +57,10 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
 
             while (super.resultSet.next()) {
                 Fornecedor model = new Fornecedor();
-                this.setValues(model);
+                this.setValuesForRetrieve(model);
                 models.add(model);
             }
+
             return models;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -72,12 +75,13 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
         try {
             super.preparedStatement = super.sqlCode(model.findById());
             super.preparedStatement.setInt(1, codigo);
-
             super.resultSet = super.preparedStatement.executeQuery();
             Fornecedor model = new Fornecedor();
+
             while (super.resultSet.next()) {
-                this.setValues(model);
+                this.setValuesForRetrieve(model);
             }
+
             return model;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -96,8 +100,9 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
             Fornecedor model = new Fornecedor();
 
             while (super.resultSet.next()) {
-                this.setValues(model);
+                this.setValuesForRetrieve(model);
             }
+
             return model;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -112,8 +117,8 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
         super.connection = ConnectionFactory.getConnection();
         try {
             super.preparedStatement = super.sqlCode(model.update());
-            // super.preparedStatement.setString(1, objeto.getDescricaoBairro());
-            // super.preparedStatement.setInt(2, objeto.getIdBairro());
+            this.setValuesForStore(model);
+            super.preparedStatement.setInt(8, model.getIdFornecedor());
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

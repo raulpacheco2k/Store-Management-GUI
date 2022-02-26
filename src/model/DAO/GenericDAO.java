@@ -29,6 +29,8 @@ public abstract class GenericDAO<T extends Model> {
         return this.connection.prepareStatement(string);
     }
 
-    public abstract T setValues(T model) throws SQLException;
+    public abstract void setValuesForRetrieve(T model) throws SQLException;
+
+    public abstract void setValuesForStore(T model) throws SQLException;
 
 }

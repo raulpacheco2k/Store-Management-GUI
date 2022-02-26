@@ -1,11 +1,12 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import model.bo.Bairro;
 import service.BairroService;
 import view.TelaBusBairro;
 import view.TelaCadBairro;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public final class ControllerCadBairro extends BaseController implements ActionListener {
 

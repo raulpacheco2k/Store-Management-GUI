@@ -116,6 +116,6 @@ public class PurchaseItemsDAO extends GenericDAO<PurchaseItems> implements Inter
     }
 
     @Override
-    public void delete(PurchaseItems objeto) {
+    public void delete(PurchaseItems model) {
     }
 }

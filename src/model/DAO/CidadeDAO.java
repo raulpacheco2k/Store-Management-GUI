@@ -144,7 +144,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     }
 
     @Override
-    public void delete(Cidade objeto) {
+    public void delete(Cidade model) {
 
     }
 

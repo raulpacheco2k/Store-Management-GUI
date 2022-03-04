@@ -110,6 +110,6 @@ public class PhoneProviderDAO extends GenericDAO<PhoneProvider> implements Inter
     }
 
     @Override
-    public void delete(PhoneProvider objeto) {
+    public void delete(PhoneProvider model) {
     }
 }

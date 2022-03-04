@@ -110,6 +110,6 @@ public class ProductTypeDAO extends GenericDAO<ProductType> implements Interface
     }
 
     @Override
-    public void delete(ProductType objeto) {
+    public void delete(ProductType model) {
     }
 }

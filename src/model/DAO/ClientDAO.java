@@ -186,7 +186,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
     }
 
     @Override
-    public void delete(Client objeto) {
+    public void delete(Client model) {
 
     }
 }

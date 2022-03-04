@@ -110,6 +110,6 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
     }
 
     @Override
-    public void delete(Bairro objeto) {
+    public void delete(Bairro model) {
     }
 }

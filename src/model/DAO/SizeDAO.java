@@ -109,6 +109,6 @@ public class SizeDAO extends GenericDAO<Size> implements InterfaceDAO<Size> {
     }
 
     @Override
-    public void delete(Size objeto) {
+    public void delete(Size model) {
     }
 }

@@ -110,6 +110,6 @@ public class ColorDAO extends GenericDAO<Color> implements InterfaceDAO<Color> {
     }
 
     @Override
-    public void delete(Color objeto) {
+    public void delete(Color model) {
     }
 }

@@ -110,6 +110,6 @@ public class BrandDAO extends GenericDAO<Brand> implements InterfaceDAO<Brand> {
     }
 
     @Override
-    public void delete(Brand objeto) {
+    public void delete(Brand model) {
     }
 }

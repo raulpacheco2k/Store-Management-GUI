@@ -116,6 +116,6 @@ public class SaleItemsDAO extends GenericDAO<SaleItems> implements InterfaceDAO<
     }
 
     @Override
-    public void delete(SaleItems objeto) {
+    public void delete(SaleItems model) {
     }
 }

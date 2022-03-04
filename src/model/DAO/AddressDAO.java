@@ -158,7 +158,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
     }
 
     @Override
-    public void delete(Endereco objeto) {
+    public void delete(Endereco model) {
 
     }
 

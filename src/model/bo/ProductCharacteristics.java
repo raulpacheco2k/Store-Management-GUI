@@ -9,7 +9,7 @@ public class ProductCharacteristics extends Model {
     private float stock;
 
     public ProductCharacteristics() {
-
+        setTable("caracteristicaproduto");
     }
 
     public ProductCharacteristics(int id, int idProduct, int idColor, String size, String barCode, float stock) {
@@ -19,6 +19,7 @@ public class ProductCharacteristics extends Model {
         this.size = size;
         this.barCode = barCode;
         this.stock = stock;
+        setTable("caracteristicaproduto");
     }
 
     public int getId() {

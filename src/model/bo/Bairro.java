@@ -56,17 +56,17 @@ public class Bairro extends Model {
 
     @Override
     public String findById() {
-        return " SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE " + getTable() + ".idbairro = ?";
+        return " SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE idbairro = ?";
     }
 
     @Override
     public String findByField(String field) {
-        return "SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE " + getTable() + "." + field + " = ?";
+        return "SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE" + field + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + getTable() + " SET descricaoBairro = ? WHERE " + getTable() + ".idbairro = ?";
+        return "UPDATE " + getTable() + " SET descricaoBairro = ? WHERE idbairro = ?";
     }
 
     @Override

@@ -13,11 +13,13 @@ public class ProductType extends Model {
     private String description;
 
     public ProductType() {
+        setTable("tipoproduto");
     }
 
     public ProductType(int id, String description) {
         this.id = id;
         this.description = description;
+        setTable("tipoproduto");
     }
 
     public int getId() {

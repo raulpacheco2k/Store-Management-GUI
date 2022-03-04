@@ -8,7 +8,7 @@
 
 package model.bo;
 
-public class ProductType {
+public class ProductType extends Model {
     private int id;
     private String description;
 
@@ -36,5 +36,35 @@ public class ProductType {
     public ProductType setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (descricaoTipoProduto) VALUES (?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + this.getTable() + "SET descricaoTipoProduto = ? WHERE idtipoProduto = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

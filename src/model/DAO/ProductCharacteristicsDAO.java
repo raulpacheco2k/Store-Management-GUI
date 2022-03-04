@@ -2,7 +2,6 @@ package model.DAO;
 
 import model.bo.ProductCharacteristics;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +10,12 @@ public class ProductCharacteristicsDAO extends GenericDAO<ProductCharacteristics
     ProductCharacteristics model = new ProductCharacteristics();
 
     public void setValuesForRetrieve(ProductCharacteristics model) throws SQLException {
-        model.setId(super.resultSet.getInt("idpagar"));
-
+        model.setId(super.resultSet.getInt("idCaracterisitcaProduto"));
+        model.setIdProduct(super.resultSet.getInt("produto_idproduto"));
+        model.setIdColor(super.resultSet.getInt("cor_idcor"));
+        model.setSize(super.resultSet.getString("tamanhoProduto"));
+        model.setBarCode(super.resultSet.getString("barraProduto"));
+        model.setStock(super.resultSet.getFloat("qtdEstoqueProduto"));
     }
 
     @Override

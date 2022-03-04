@@ -20,9 +20,10 @@ public class SizeDAO extends GenericDAO<Size> implements InterfaceDAO<Size> {
     }
 
     @Override
-    public void create(Size objeto) {
+    public void create(Size model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

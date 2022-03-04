@@ -20,9 +20,10 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
     }
 
     @Override
-    public void create(Bairro objeto) {
+    public void create(Bairro model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

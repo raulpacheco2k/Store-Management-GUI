@@ -20,9 +20,10 @@ public class ProductTypeDAO extends GenericDAO<ProductType> implements Interface
     }
 
     @Override
-    public void create(ProductType objeto) {
+    public void create(ProductType model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

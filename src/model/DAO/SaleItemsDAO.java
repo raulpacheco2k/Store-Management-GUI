@@ -26,9 +26,10 @@ public class SaleItemsDAO extends GenericDAO<SaleItems> implements InterfaceDAO<
     }
 
     @Override
-    public void create(SaleItems objeto) {
+    public void create(SaleItems model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

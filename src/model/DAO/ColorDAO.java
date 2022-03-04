@@ -20,9 +20,10 @@ public class ColorDAO extends GenericDAO<Color> implements InterfaceDAO<Color> {
     }
 
     @Override
-    public void create(Color objeto) {
+    public void create(Color model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

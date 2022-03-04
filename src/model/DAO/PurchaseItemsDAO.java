@@ -26,9 +26,10 @@ public class PurchaseItemsDAO extends GenericDAO<PurchaseItems> implements Inter
     }
 
     @Override
-    public void create(PurchaseItems objeto) {
+    public void create(PurchaseItems model) {
         try {
-            super.preparedStatement = super.sqlCode(model.insert());
+            super.preparedStatement = super.sqlCode(this.model.insert());
+            this.setValuesForStore(model);
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -10,8 +10,8 @@ public class ColorDAO extends GenericDAO<Color> implements InterfaceDAO<Color> {
     Color model = new Color();
 
     public void setValuesForRetrieve(Color model) throws SQLException {
-        model.setId(super.resultSet.getInt("idmarca"));
-        model.setDescription(super.resultSet.getString("descricaoMarca"));
+        model.setId(super.resultSet.getInt("idcor"));
+        model.setDescription(super.resultSet.getString("descricaoCor"));
     }
 
     @Override
@@ -76,7 +76,7 @@ public class ColorDAO extends GenericDAO<Color> implements InterfaceDAO<Color> {
     @Override
     public Color retrieve(String string) {
         try {
-            super.preparedStatement = super.sqlCode(model.findByField("descricaoColor"));
+            super.preparedStatement = super.sqlCode(model.findByField("descricaoCor"));
             super.preparedStatement.setString(1, string);
             super.resultSet = super.preparedStatement.executeQuery();
             Color model = new Color();

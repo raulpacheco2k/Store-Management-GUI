@@ -8,7 +8,7 @@
 
 package model.bo;
 
-public class Brand {
+public class Brand extends Model {
     private int id;
     private String description;
 
@@ -18,6 +18,7 @@ public class Brand {
     public Brand(int id, String description) {
         this.id = id;
         this.description = description;
+        setTable("marca");
     }
 
     public int getId() {
@@ -36,5 +37,35 @@ public class Brand {
     public Brand setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (descricaoMarca) VALUES (?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idmarca, descricaoMarca FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idmarca, descricaoMarca FROM" + this.getTable() + "WHERE idmarca = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idmarca, descricaoMarca FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + getTable() + "SET descricaoMarca = ? WHERE idmarca = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

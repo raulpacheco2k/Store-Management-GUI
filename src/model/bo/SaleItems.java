@@ -8,7 +8,7 @@
 
 package model.bo;
 
-public class SaleItems {
+public class SaleItems extends Model {
     private int id;
     private int sale_id;
     private int productCharacteristics_id;
@@ -16,6 +16,7 @@ public class SaleItems {
     private float unitaryValue;
 
     public SaleItems() {
+        setTable("itensvenda");
     }
 
     public SaleItems(int id, int sale_id, int productCharacteristics_id, float quantity, float unitaryValue) {
@@ -24,6 +25,7 @@ public class SaleItems {
         this.productCharacteristics_id = productCharacteristics_id;
         this.quantity = quantity;
         this.unitaryValue = unitaryValue;
+        setTable("itensvenda");
     }
 
     public int getId() {
@@ -69,5 +71,35 @@ public class SaleItems {
     public SaleItems setUnitaryValue(float unitaryValue) {
         this.unitaryValue = unitaryValue;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto) VALUES (?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + this.getTable() + "SET venda_idvenda = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, valunitarioProduto = ?, qtdProduto = ? WHERE idItensVenda = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

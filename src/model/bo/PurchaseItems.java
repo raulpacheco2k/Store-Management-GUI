@@ -8,7 +8,7 @@
 
 package model.bo;
 
-public class PurchaseItems {
+public class PurchaseItems extends Model {
     private int id;
     private int purchase_id;
     private int productCharacteristics_id;
@@ -16,6 +16,7 @@ public class PurchaseItems {
     private float unitaryValue;
 
     public PurchaseItems() {
+        setTable("itenscompra");
     }
 
     public PurchaseItems(int id, int purchase_id, int productCharacteristics_id, float quantity, float unitaryValue) {
@@ -24,6 +25,7 @@ public class PurchaseItems {
         this.productCharacteristics_id = productCharacteristics_id;
         this.quantity = quantity;
         this.unitaryValue = unitaryValue;
+        setTable("itenscompra");
     }
 
     public int getId() {
@@ -69,5 +71,35 @@ public class PurchaseItems {
     public PurchaseItems setUnitaryValue(float unitaryValue) {
         this.unitaryValue = unitaryValue;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto) VALUES (?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + this.getTable() + "SET compra_idcompra = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, qtdProduto = ?, valunitarioProduto = ? WHERE iditensCompra = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

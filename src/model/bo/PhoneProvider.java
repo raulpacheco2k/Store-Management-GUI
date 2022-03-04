@@ -1,24 +1,17 @@
 package model.bo;
 
-public class PhoneProvider {
-    private int id;
+public class PhoneProvider extends Model {
     private String phone;
+    private int provider;
 
     public PhoneProvider() {
+        setTable("foneFornecedor");
     }
 
-    public PhoneProvider(int id, String phone) {
-        this.id = id;
+    public PhoneProvider(String phone, int provider) {
         this.phone = phone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public PhoneProvider setId(int id) {
-        this.id = id;
-        return this;
+        this.provider = provider;
+        setTable("foneFornecedor");
     }
 
     public String getPhone() {
@@ -30,5 +23,42 @@ public class PhoneProvider {
         return this;
     }
 
+    public int getProvider() {
+        return provider;
+    }
 
+    public PhoneProvider setProvider(int provider) {
+        this.provider = provider;
+        return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (foneFornecedor, fornecedor_idfornecedor) VALUES (?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable() + "WHERE foneFornecedor = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + this.getTable() + "SET foneFornecedor = ? WHERE foneFornecedor = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
+    }
 }

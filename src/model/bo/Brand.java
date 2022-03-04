@@ -13,6 +13,7 @@ public class Brand extends Model {
     private String description;
 
     public Brand() {
+        setTable("marca");
     }
 
     public Brand(int id, String description) {

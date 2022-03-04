@@ -23,6 +23,7 @@ public class Pay extends Model {
     private int status;
 
     public Pay() {
+        setTable("pagar");
     }
 
     public Pay(int id, int purchase_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
@@ -36,6 +37,7 @@ public class Pay extends Model {
         this.discount = discount;
         this.amountPaid = amountPaid;
         this.status = status;
+        setTable("pagar");
     }
 
     public int getId() {

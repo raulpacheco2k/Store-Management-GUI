@@ -23,6 +23,7 @@ public class Receive extends Model {
     private int status;
 
     public Receive() {
+        setTable("receber");
     }
 
     public Receive(int id, int sale_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
@@ -36,6 +37,7 @@ public class Receive extends Model {
         this.discount = discount;
         this.amountPaid = amountPaid;
         this.status = status;
+        setTable("receber");
     }
 
     public int getId() {

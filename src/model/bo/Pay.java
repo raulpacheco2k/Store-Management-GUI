@@ -10,7 +10,7 @@ package model.bo;
 
 import java.util.Date;
 
-public class Pay {
+public class Pay extends Model {
     private int id;
     private int purchase_id;
     private Date dateIssuance;
@@ -20,12 +20,12 @@ public class Pay {
     private float addition;
     private float discount;
     private float amountPaid;
-    private float status;
+    private int status;
 
     public Pay() {
     }
 
-    public Pay(int id, int purchase_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, float status) {
+    public Pay(int id, int purchase_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
         this.id = id;
         this.purchase_id = purchase_id;
         this.dateIssuance = dateIssuance;
@@ -119,12 +119,42 @@ public class Pay {
         return this;
     }
 
-    public float getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public Pay setStatus(float status) {
+    public Pay setStatus(int status) {
         this.status = status;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO pagar (compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ) ";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar";
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar WHERE idpagar = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar WHERE" + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE pagar SET compra_idcompra = ?, dtHrEmissaoPagar = ?, dtVencimentoPagar = ?, valemitidoPagar = ?, acrescimoPagar = ?, descontoPagar = ?, dtHrPgtoPagar = ?, valPagoPagar = ?, statusPagar = ? WHERE idpagar = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

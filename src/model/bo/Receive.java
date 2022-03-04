@@ -10,7 +10,7 @@ package model.bo;
 
 import java.util.Date;
 
-public class Receive {
+public class Receive extends Model {
     private int id;
     private int sale_id;
     private Date dateIssuance;
@@ -20,12 +20,12 @@ public class Receive {
     private float addition;
     private float discount;
     private float amountPaid;
-    private float status;
+    private int status;
 
     public Receive() {
     }
 
-    public Receive(int id, int sale_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, float status) {
+    public Receive(int id, int sale_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
         this.id = id;
         this.sale_id = sale_id;
         this.dateIssuance = dateIssuance;
@@ -119,12 +119,42 @@ public class Receive {
         return this;
     }
 
-    public float getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public Receive setStatus(float status) {
+    public Receive setStatus(int status) {
         this.status = status;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO receber (venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber";
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber WHERE idpagar = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber WHERE" + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE receber SET venda_idvenda = ?, dtHrEmissaoRec = ?, valEmissaoRec = ?, dtVencimentoRec = ?, dtPgtoRec = ?, acrescimeRec = ?, descontoRec = ?, valPagoRec = ?, statusRec = ? WHERE idreceber = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

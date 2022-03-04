@@ -100,7 +100,7 @@ public class PhoneProviderDAO extends GenericDAO<PhoneProvider> implements Inter
         try {
             super.preparedStatement = super.sqlCode(model.update());
             super.preparedStatement.setString(1, model.getPhone());
-            super.preparedStatement.setInt(2, model.getProvider());
+            super.preparedStatement.setString(2, model.getPhone());
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

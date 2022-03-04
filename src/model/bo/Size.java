@@ -8,16 +8,19 @@
 
 package model.bo;
 
-public class Size {
+public class Size extends Model {
     private int id;
     private String description;
 
     public Size() {
+        setTable("tamanho");
     }
 
     public Size(int id, String description) {
         this.id = id;
         this.description = description;
+        setTable("tamanho");
+
     }
 
     public int getId() {
@@ -36,5 +39,35 @@ public class Size {
     public Size setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + this.getTable() + " (idtamanho, descricaoTamanho) VALUES (?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable() + "WHERE idtamanho = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable() + "WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + this.getTable() + "SET descricaoTamanho = ? WHERE idtamanho = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

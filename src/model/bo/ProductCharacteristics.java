@@ -1,6 +1,6 @@
 package model.bo;
 
-public class ProductCharacteristics {
+public class ProductCharacteristics extends Model {
     private int id;
     private int idProduct;
     private int idColor;
@@ -73,5 +73,35 @@ public class ProductCharacteristics {
     public ProductCharacteristics setStock(float stock) {
         this.stock = stock;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO caracteristicaproduto (produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto) VALUES (?, ?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto";
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto WHERE idCaracterisitcaProduto = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE caracteristicaproduto SET cor_idcor = ?, tamanhoProduto = ?, barraProduto = ?, qtdEstoqueProduto = ? WHERE idCaracterisitcaProduto = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

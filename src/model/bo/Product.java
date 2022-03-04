@@ -8,7 +8,7 @@
 
 package model.bo;
 
-public class Product {
+public class Product extends Model {
     private int id;
     private String description;
     private float value;
@@ -17,6 +17,7 @@ public class Product {
     private int product_size;
 
     public Product() {
+        setTable("produto");
     }
 
     public Product(int id, String description, float value, int brand_id, int product_type, int product_size) {
@@ -26,6 +27,7 @@ public class Product {
         this.brand_id = brand_id;
         this.product_type = product_type;
         this.product_size = product_size;
+        setTable("produto");
     }
 
     public int getId() {
@@ -80,5 +82,35 @@ public class Product {
     public Product setProduct_size(int product_size) {
         this.product_size = product_size;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return "INSERT INTO " + getTable() + "(descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho) VALUES (?, ?, ?, ?, ?)";
+    }
+
+    @Override
+    public String findAll() {
+        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM" + getTable();
+    }
+
+    @Override
+    public String findById() {
+        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable() + " WHERE idproduto = ?";
+    }
+
+    @Override
+    public String findByField(String string) {
+        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable() + " WHERE " + string + " = ?";
+    }
+
+    @Override
+    public String update() {
+        return "UPDATE " + getTable() + " SET descricaoProduto = ?, valProduto = ?, marca_idmarca = ?, tipoProduto_idtipoProduto = ?, tamanho_idtamanho = ? WHERE idproduto = ?";
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

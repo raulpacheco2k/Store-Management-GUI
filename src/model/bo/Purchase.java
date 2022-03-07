@@ -2,7 +2,7 @@ package model.bo;
 
 import java.util.Date;
 
-public class Purchase {
+public class Purchase extends Model {
     private int id;
     private int idProvider;
     private int paymentCondition;
@@ -15,7 +15,16 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(int id, int idProvider, int paymentCondition, int numberNF, String serieNF, Date dateHour, float discount, float totalValue) {
+    public Purchase(
+            int id,
+            int idProvider,
+            int paymentCondition,
+            int numberNF,
+            String serieNF,
+            Date dateHour,
+            float discount,
+            float totalValue
+    ) {
         this.id = id;
         this.idProvider = idProvider;
         this.paymentCondition = paymentCondition;
@@ -96,5 +105,35 @@ public class Purchase {
     public Purchase setTotalValue(float totalValue) {
         this.totalValue = totalValue;
         return this;
+    }
+
+    @Override
+    public String insert() {
+        return null;
+    }
+
+    @Override
+    public String findAll() {
+        return null;
+    }
+
+    @Override
+    public String findById() {
+        return null;
+    }
+
+    @Override
+    public String findByField(String string) {
+        return null;
+    }
+
+    @Override
+    public String update() {
+        return null;
+    }
+
+    @Override
+    public String delete() {
+        return null;
     }
 }

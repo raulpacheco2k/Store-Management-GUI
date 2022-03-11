@@ -25,7 +25,6 @@ public class TelaCadFornecedor extends javax.swing.JFrame implements BaseMenuBut
     public TelaCadFornecedor() {
         initComponents();
         preencheEndereco();
-
     }
 
     private void preencheEndereco() {

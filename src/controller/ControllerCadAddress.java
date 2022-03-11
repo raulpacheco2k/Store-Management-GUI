@@ -98,11 +98,14 @@ public class ControllerCadAddress extends BaseController implements ActionListen
 
             endereco = this.service.buscar(codigo);
 
-            super.creationState(this.screen, false);
+            super.creationState(this.screen, true);
             super.enableFieldsForCreation(this.screen, true);
 
             this.screen.getId().setText(endereco.getIdCep() + "");
+            this.screen.getZipCode().setText(endereco.getCepCep());
             this.screen.getStreet().setText(endereco.getLogradouroCep());
+            this.screen.getNeighborhood().getModel().setSelectedItem(endereco.getBairro());
+            this.screen.getCity().getModel().setSelectedItem(endereco.getCidade());
 
             this.screen.getId().setEnabled(false);
         }

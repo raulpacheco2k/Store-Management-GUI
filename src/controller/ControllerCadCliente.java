@@ -69,6 +69,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
+        client.idEndereco = Integer.parseInt(this.screen.getId().getText());
 
         int endereco = this.screen.getCepList().getIdCep();
 
@@ -89,7 +90,6 @@ public class ControllerCadCliente extends BaseController implements ActionListen
     }
 
     public void search() {
-        codigo = 0;
         TelaBusCliente telaBusCliente = new TelaBusCliente(null, true);
         ControllerBusClient controllerBusClient = new ControllerBusClient(telaBusCliente);
         telaBusCliente.setVisible(true);
@@ -99,12 +99,21 @@ public class ControllerCadCliente extends BaseController implements ActionListen
             ClientService clientService = new ClientService();
             client = clientService.buscar(codigo);
 
-            creationState(this.screen, false);
+            creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);
 
-//            this.screen.().setText(client.getNome() + "");
+            this.screen.getId().setText(client.getIdCliente() + "");
+            this.screen.getFullName().setText(client.getNome());
             this.screen.getDocument_cpf().setText(client.getCpfCliente());
             this.screen.getDocument_rg().setText(client.getRgCliente());
+            this.screen.getTelephone_1().setText(client.getFoneCliente());
+            this.screen.getTelephone_2().setText(client.getFone2Cliente());
+            this.screen.getEmail().setText(client.getEmail());
+            this.screen.getComplement().setText(client.getCompleEndereco());
+            this.screen.getDateOfBirth().setText(String.valueOf(client.getDtNasc()));
+            // this.screen.getCepList().getModel().setSelectedItem(endereco.getCidade());
+
+
 
             this.screen.getId().setEnabled(false);
         }

@@ -19,7 +19,7 @@ public class ControllerBusClient implements ActionListener {
         telaBusCliente.getjButtonCarregar().addActionListener(this);
         telaBusCliente.getjButtonSair().addActionListener(this);
 
-        DefaultTableModel tabela = (DefaultTableModel) this.telaBusCliente.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.telaBusCliente.getjTable1().getModel();
 
         ClientService clientService = new ClientService();
 
@@ -27,7 +27,7 @@ public class ControllerBusClient implements ActionListener {
             tabela.addRow(new Object[]{
                     client.getIdCliente(),
                     client.getNome(),
-                    client.getRgCliente()
+                    client.getCpfCliente()
             });
         }
     }
@@ -35,7 +35,7 @@ public class ControllerBusClient implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.telaBusCliente.getjButtonCarregar()) {
-            ControllerCadCidade.codigo = (int) this.telaBusCliente.getTable().getValueAt(this.telaBusCliente.getTable().getSelectedRow(), 0);
+            ControllerCadCliente.codigo = (int) this.telaBusCliente.getjTable1().getValueAt(this.telaBusCliente.getjTable1().getSelectedRow(), 0);
             this.telaBusCliente.dispose();
         } else if (e.getSource() == this.telaBusCliente.getjButtonSair()) {
             this.telaBusCliente.dispose();

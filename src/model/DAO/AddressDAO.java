@@ -57,6 +57,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
                 Endereco address = new Endereco();
                 address.setIdCep(this.queryResult.getInt("idcep"));
                 address.setCepCep(this.queryResult.getString("cepCep"));
+                address.setLogradouroCep(this.queryResult.getString("logradouroCep"));
                 address.setBairro(this.BairroDAO.retrieve(this.queryResult.getInt("bairro_idbairro")));
                 address.setCidade(this.CidadeDAO.retrieve(this.queryResult.getInt("cidade_idcidade")));
                 cidades.add(address);
@@ -74,7 +75,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
 
     @Override
     public Endereco retrieve(int codigo) {
-        String sqlExecutar = " SELECT * FROM endereco WHERE endereco.idcep = ?";
+        String sqlExecutar = " SELECT idcep, cepCep, logradouroCep, bairro_idbairro, cidade_idcidade FROM endereco WHERE idcep = ?";
         Connection conexao = ConnectionFactory.getConnection();
 
         try {
@@ -85,6 +86,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
             while (this.queryResult.next()) {
                 address.setIdCep(this.queryResult.getInt("idcep"));
                 address.setCepCep(this.queryResult.getString("cepCep"));
+                address.setLogradouroCep(this.queryResult.getString("logradouroCep"));
                 address.setBairro(this.BairroDAO.retrieve(this.queryResult.getInt("bairro_idbairro")));
                 address.setCidade(this.CidadeDAO.retrieve(this.queryResult.getInt("cidade_idcidade")));
             }
@@ -139,7 +141,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
                         + "SET cepCep = ? ,"
                         + " logradouroCep = ?, "
                         + "bairro_idbairro = ?,"
-                        + "cidade_idcidade ?"
+                        + "cidade_idcidade = ?"
                         + " WHERE endereco.idcep = ? ";
 
 
@@ -149,6 +151,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
             this.pstm.setString(2, objeto.getLogradouroCep());
             this.pstm.setInt(3, objeto.getBairro().getIdBairro());
             this.pstm.setInt(4, objeto.getCidade().getIdCidade());
+            this.pstm.setInt(5, objeto.getIdCep());
 
             this.pstm.executeUpdate();
         } catch (Exception ex) {

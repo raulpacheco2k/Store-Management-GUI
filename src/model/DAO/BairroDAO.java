@@ -65,13 +65,14 @@ public class BairroDAO extends GenericDAO<Bairro> implements InterfaceDAO<Bairro
             while (super.resultSet.next()) {
                 this.setValuesForRetrieve(bairro);
             }
+           
             return bairro;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return null;
-        } finally {
             ConnectionFactory.closeConnection(super.connection, super.preparedStatement, super.resultSet);
+            return null;
         }
+        
     }
 
     @Override

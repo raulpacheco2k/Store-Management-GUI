@@ -32,8 +32,6 @@ public class ClientDAO implements InterfaceDAO<Client> {
             pstm.setString(8, objeto.getCompleEndereco());
             pstm.setInt(9, objeto.idEndereco);
 
-            System.out.println(pstm);
-
             pstm.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -60,6 +58,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
             while (rst.next()) {
                 Client client = new Client();
 
+                client.setIdCliente(rst.getInt("idcliente"));
                 client.setNome(rst.getString("nomeCliente"));
                 client.setDtNasc(rst.getDate("dtNasCliente"));
                 client.setRgCliente((rst.getString("rgCliente")));
@@ -81,11 +80,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
 
     @Override
     public Client retrieve(int codigo) {
-        String sqlExecutar = " SELECT idcidade, "
-                + " descricaoCidade, "
-                + " ufCidade "
-                + " FROM cidade "
-                + " WHERE cidade.idcidade = ?";
+        String sqlExecutar = "SELECT idcliente, nomeCliente, dtNasCliente, cpfCliente, rgCliente, foneCliente, fone2Cliente, emailCliente, compleEnderecoCliente, endereco_idcep FROM cliente WHERE idcliente = ?";
         Connection conexao = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
         ResultSet rst = null;
@@ -96,6 +91,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
             rst = pstm.executeQuery();
             Client client = new Client();
             while (rst.next()) {
+                client.setIdCliente(rst.getInt("idcliente"));
                 client.setNome(rst.getString("nomeCliente"));
                 client.setDtNasc(rst.getDate("dtNasCliente"));
                 client.setRgCliente((rst.getString("rgCliente")));
@@ -103,6 +99,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
                 client.setFoneCliente((rst.getString("foneCliente")));
                 client.setFone2Cliente((rst.getString("fone2Cliente")));
                 client.setEmail((rst.getString("emailCliente")));
+                client.setCompleEndereco((rst.getString("compleEnderecoCliente")));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
             return client;
@@ -177,6 +174,8 @@ public class ClientDAO implements InterfaceDAO<Client> {
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
+            pstm.setInt(9, objeto.idEndereco);
+            pstm.setInt(10, objeto.getIdCliente());
 
             pstm.executeUpdate();
         } catch (Exception ex) {

@@ -91,7 +91,7 @@ public class Product extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM" + getTable();
+        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable();
     }
 
     @Override

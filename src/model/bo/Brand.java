@@ -47,22 +47,22 @@ public class Brand extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idmarca, descricaoMarca FROM" + this.getTable();
+        return "SELECT idmarca, descricaoMarca FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idmarca, descricaoMarca FROM" + this.getTable() + "WHERE idmarca = ?";
+        return "SELECT idmarca, descricaoMarca FROM " + this.getTable() + " WHERE idmarca = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idmarca, descricaoMarca FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idmarca, descricaoMarca FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + getTable() + "SET descricaoMarca = ? WHERE idmarca = ?";
+        return "UPDATE " + getTable() + " SET descricaoMarca = ? WHERE idmarca = ?";
     }
 
     @Override

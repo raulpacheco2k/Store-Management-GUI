@@ -7,6 +7,7 @@ public class PaymentCondition extends Model {
     private int daysBetweenInstallments;
 
     public PaymentCondition() {
+        setTable("condicaopagamento");
     }
 
     public PaymentCondition(int id, String conditionDescription, int daysUntilFirstInstallment, int daysBetweenInstallments) {
@@ -14,6 +15,7 @@ public class PaymentCondition extends Model {
         this.conditionDescription = conditionDescription;
         this.daysUntilFirstInstallment = daysUntilFirstInstallment;
         this.daysBetweenInstallments = daysBetweenInstallments;
+        setTable("condicaopagamento");
     }
 
     public int getId() {
@@ -59,22 +61,22 @@ public class PaymentCondition extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM" + this.getTable();
+        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM" + this.getTable() + "WHERE idcondicaoPagamento = ?";
+        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable() + " WHERE idcondicaoPagamento = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET descricaoCondicaoPagamento = ?, numDiasAtePrimeiraParcela = ?, numDiasEntreParcelas = ? WHERE idcondicaoPagamento = ?";
+        return "UPDATE " + this.getTable() + " SET descricaoCondicaoPagamento = ?, numDiasAtePrimeiraParcela = ?, numDiasEntreParcelas = ? WHERE idcondicaoPagamento = ?";
     }
 
     @Override

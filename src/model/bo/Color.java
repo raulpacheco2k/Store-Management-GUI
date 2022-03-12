@@ -39,22 +39,22 @@ public class Color extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idcor, descricaoCor FROM" + this.getTable();
+        return "SELECT idcor, descricaoCor FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idcor, descricaoCor FROM" + this.getTable() + "WHERE idcor = ?";
+        return "SELECT idcor, descricaoCor FROM " + this.getTable() + " WHERE idcor = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idcor, descricaoCor FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idcor, descricaoCor FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET descricaoCor = ? WHERE idcor = ?";
+        return "UPDATE " + this.getTable() + " SET descricaoCor = ? WHERE idcor = ?";
     }
 
     @Override

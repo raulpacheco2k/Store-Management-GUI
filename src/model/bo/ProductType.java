@@ -47,22 +47,22 @@ public class ProductType extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable();
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM " + this.getTable() + " WHERE idtipoProduto = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idtipoProduto, descricaoTipoProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idtipoProduto, descricaoTipoProduto FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET descricaoTipoProduto = ? WHERE idtipoProduto = ?";
+        return "UPDATE " + this.getTable() + " SET descricaoTipoProduto = ? WHERE idtipoProduto = ?";
     }
 
     @Override

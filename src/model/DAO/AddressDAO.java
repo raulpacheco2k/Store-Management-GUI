@@ -138,7 +138,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
 
         String sqlExecutar =
                 " UPDATE endereco "
-                        + "SET cepCep = ? ,"
+                        + " SET cepCep = ? ,"
                         + " logradouroCep = ?, "
                         + "bairro_idbairro = ?,"
                         + "cidade_idcidade = ?"

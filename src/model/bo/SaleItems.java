@@ -80,22 +80,22 @@ public class SaleItems extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable();
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM " + this.getTable() + " WHERE idtipoProduto = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idItensVenda, venda_idvenda, caracteristicaProduto_idCaracterisitcaProduto, valunitarioProduto, qtdProduto FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET venda_idvenda = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, valunitarioProduto = ?, qtdProduto = ? WHERE idItensVenda = ?";
+        return "UPDATE " + this.getTable() + " SET venda_idvenda = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, valunitarioProduto = ?, qtdProduto = ? WHERE idItensVenda = ?";
     }
 
     @Override

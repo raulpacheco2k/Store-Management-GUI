@@ -151,7 +151,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
         Connection conexao = ConnectionFactory.getConnection();
 
         String sqlExecutar = "UPDATE cliente "
-                + "SET nomeCliente = ?, "
+                + " SET nomeCliente = ?, "
                 + "dtNasCliente = ?, "
                 + "cpfCliente = ?, "
                 + "rgCliente = ?, "
@@ -160,7 +160,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
                 + "emailCliente = ?, "
                 + "compleEnderecoCliente = ?, "
                 + "endereco_idcep  = ? "
-                + "WHERE cliente.idcliente = ?";
+                + " WHERE cliente.idcliente = ?";
 
         PreparedStatement pstm = null;
         try {

@@ -80,22 +80,22 @@ public class PurchaseItems extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable();
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable() + "WHERE idtipoProduto = ?";
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable() + " WHERE idtipoProduto = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET compra_idcompra = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, qtdProduto = ?, valunitarioProduto = ? WHERE iditensCompra = ?";
+        return "UPDATE " + this.getTable() + " SET compra_idcompra = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, qtdProduto = ?, valunitarioProduto = ? WHERE iditensCompra = ?";
     }
 
     @Override

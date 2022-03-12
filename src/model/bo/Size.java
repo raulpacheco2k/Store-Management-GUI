@@ -48,22 +48,22 @@ public class Size extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable();
+        return "SELECT idtamanho, descricaoTamanho FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable() + "WHERE idtamanho = ?";
+        return "SELECT idtamanho, descricaoTamanho FROM " + this.getTable() + " WHERE idtamanho = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT idtamanho, descricaoTamanho FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT idtamanho, descricaoTamanho FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET descricaoTamanho = ? WHERE idtamanho = ?";
+        return "UPDATE " + this.getTable() + " SET descricaoTamanho = ? WHERE idtamanho = ?";
     }
 
     @Override

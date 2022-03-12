@@ -39,22 +39,22 @@ public class PhoneProvider extends Model {
 
     @Override
     public String findAll() {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable();
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable();
     }
 
     @Override
     public String findById() {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable() + "WHERE foneFornecedor = ?";
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable() + " WHERE foneFornecedor = ?";
     }
 
     @Override
     public String findByField(String string) {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM" + this.getTable() + "WHERE " + string + " = ?";
+        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable() + " WHERE " + string + " = ?";
     }
 
     @Override
     public String update() {
-        return "UPDATE " + this.getTable() + "SET foneFornecedor = ? WHERE foneFornecedor = ?";
+        return "UPDATE " + this.getTable() + " SET foneFornecedor = ? WHERE foneFornecedor = ?";
     }
 
     @Override

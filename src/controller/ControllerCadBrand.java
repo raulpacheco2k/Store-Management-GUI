@@ -2,7 +2,7 @@ package controller;
 
 import model.bo.Brand;
 import service.BrandService;
-import view.TelaBusBairro;
+import view.TelaBusBrand;
 import view.TelaCadBrand;
 
 import java.awt.event.ActionEvent;
@@ -67,9 +67,9 @@ public final class ControllerCadBrand extends BaseController implements ActionLi
     }
 
     public void search() {
-        TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-        ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-        telaBusBairro.setVisible(true);
+        TelaBusBrand telaBusBrand = new TelaBusBrand(null, true);
+        ControllerBusBrand controllerBusBrand = new ControllerBusBrand(telaBusBrand);
+        telaBusBrand.setVisible(true);
 
         if (code != 0) {
             Brand model;

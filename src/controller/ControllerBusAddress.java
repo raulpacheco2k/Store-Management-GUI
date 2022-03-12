@@ -12,25 +12,12 @@ public class ControllerBusAddress implements ActionListener {
 
     TelaBusAddress telaBusBairro;
     AddressService addressService = new AddressService();
+    DefaultTableModel table;
 
     public ControllerBusAddress(TelaBusAddress telaBusBairro) {
-
-        this.telaBusBairro = telaBusBairro;
-
-        telaBusBairro.getjButtonCarregar().addActionListener(this);
-        telaBusBairro.getjButtonSair().addActionListener(this);
-
-        DefaultTableModel tabela = (DefaultTableModel) this.telaBusBairro.getjTable1().getModel();
-
-        for (Endereco endereco : this.addressService.buscar()) {
-            tabela.addRow(new Object[]{
-                    endereco.getIdCep(),
-                    endereco.getCepCep(),
-                    endereco.getCidade(),
-                    endereco.getBairro(),
-                    endereco.getLogradouroCep()
-            });
-        }
+        addListeners(telaBusBairro);
+        this.table = (DefaultTableModel) this.telaBusBairro.getjTable1().getModel();
+        fillData();
     }
 
     @Override
@@ -41,6 +28,24 @@ public class ControllerBusAddress implements ActionListener {
             this.telaBusBairro.dispose();
         } else if (e.getSource() == this.telaBusBairro.getjButtonSair()) {
             this.telaBusBairro.dispose();
+        }
+    }
+
+    public void addListeners(TelaBusAddress telaBusBairro) {
+        this.telaBusBairro = telaBusBairro;
+        telaBusBairro.getjButtonCarregar().addActionListener(this);
+        telaBusBairro.getjButtonSair().addActionListener(this);
+    }
+
+    public void fillData() {
+        for (Endereco endereco : this.addressService.buscar()) {
+            this.table.addRow(new Object[]{
+                    endereco.getIdCep(),
+                    endereco.getCepCep(),
+                    endereco.getCidade(),
+                    endereco.getBairro(),
+                    endereco.getLogradouroCep()
+            });
         }
     }
 }

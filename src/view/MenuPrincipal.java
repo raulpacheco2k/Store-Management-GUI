@@ -31,22 +31,75 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuBar4 = new javax.swing.JMenuBar();
+        jMenu10 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menuCidades = new javax.swing.JMenuItem();
         menuBairro = new javax.swing.JMenuItem();
         menuEndereco = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        Cor = new javax.swing.JMenuItem();
+        Tamanho = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenuItem();
         menuFornecedor = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jRadioButtonMenuItem2.setSelected(true);
+        jRadioButtonMenuItem2.setText("jRadioButtonMenuItem2");
+
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu6.setText("Edit");
+        jMenuBar2.add(jMenu6);
+
+        jRadioButtonMenuItem3.setSelected(true);
+        jRadioButtonMenuItem3.setText("jRadioButtonMenuItem3");
+
+        jMenu8.setText("File");
+        jMenuBar3.add(jMenu8);
+
+        jMenu9.setText("Edit");
+        jMenuBar3.add(jMenu9);
+
+        jMenu10.setText("File");
+        jMenuBar4.add(jMenu10);
+
+        jMenu11.setText("Edit");
+        jMenuBar4.add(jMenu11);
+
+        jMenuItem3.setText("jMenuItem3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu2.setText("Cadastros");
+        jMenu2.setText("Endereço");
 
         menuCidades.setText("Cidades");
         menuCidades.addActionListener(new java.awt.event.ActionListener() {
@@ -72,13 +125,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuEndereco);
 
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Produto");
+
+        jMenuItem2.setText("Marca");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem2);
+
+        Cor.setText("Cor");
+        Cor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorActionPerformed(evt);
+            }
+        });
+        jMenu5.add(Cor);
+
+        Tamanho.setText("Tamanho");
+        Tamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TamanhoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(Tamanho);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu3.setText("Pessoas");
+
         menuCliente.setText("Cliente");
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuClienteActionPerformed(evt);
             }
         });
-        jMenu2.add(menuCliente);
+        jMenu3.add(menuCliente);
 
         menuFornecedor.setText("Fornecedor");
         menuFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -86,24 +171,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 menuFornecedorActionPerformed(evt);
             }
         });
-        jMenu2.add(menuFornecedor);
+        jMenu3.add(menuFornecedor);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setText("Venda");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Movimentos");
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Relatórios");
-        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -115,7 +185,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -152,11 +222,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         telaCadFornecedor.setVisible(true);
     }//GEN-LAST:event_menuFornecedorActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        TelaVendas telaVendas = new TelaVendas();
-        ControllerCadSale controllerCadSale = new ControllerCadSale(telaVendas);
-        telaVendas.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        TelaCadBrand telaCadBrand = new TelaCadBrand();
+        ControllerCadBrand controllerCadBrand = new ControllerCadBrand(telaCadBrand);
+        telaCadBrand.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void CorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorActionPerformed
+        TelaCadColor telaCadColor = new TelaCadColor();
+        ControllerCadColor controllerCadColor = new ControllerCadColor(telaCadColor);
+        telaCadColor.setVisible(true);
+    }//GEN-LAST:event_CorActionPerformed
+
+    private void TamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamanhoActionPerformed
+        TelaCadSize telaCadSize = new TelaCadSize();
+        ControllerCadSize controller = new ControllerCadSize(telaCadSize);
+        telaCadSize.setVisible(true);
+    }//GEN-LAST:event_TamanhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,12 +276,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Cor;
+    private javax.swing.JMenuItem Tamanho;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem menuBairro;
     private javax.swing.JMenuItem menuCidades;
     private javax.swing.JMenuItem menuCliente;

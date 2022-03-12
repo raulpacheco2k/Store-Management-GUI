@@ -7,6 +7,11 @@
             <file>file:/C:/Users/house/Documents/Aulas%202021%20-%202/PDS%201/ProjettoLojaJavaDAO/src/controller/ControllerCadCidade.java</file>
             <file>file:/C:/Users/house/Documents/Aulas%202021%20-%202/PDS%201/ProjettoLojaJavaDAO/src/view/TelaCadCidade.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/D:/Desenvolvimento/ProjettoLojaJavaDAO/src/view/TelaCadBrand.java</file>
+            <file>file:/D:/Desenvolvimento/ProjettoLojaJavaDAO/src/view/TelaCadColor.java</file>
+            <file>file:/D:/Desenvolvimento/ProjettoLojaJavaDAO/src/view/MenuPrincipal.java</file>
+            <file>file:/D:/Desenvolvimento/ProjettoLojaJavaDAO/src/view/TelaCadSize.java</file>
+        </group>
     </open-files>
 </project-private>

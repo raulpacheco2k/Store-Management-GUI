@@ -43,7 +43,7 @@ public class Size extends Model {
 
     @Override
     public String insert() {
-        return "INSERT INTO " + this.getTable() + " (idtamanho, descricaoTamanho) VALUES (?, ?)";
+        return "INSERT INTO " + this.getTable() + " (descricaoTamanho) VALUES (?)";
     }
 
     @Override

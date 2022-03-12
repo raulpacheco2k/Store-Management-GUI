@@ -2,7 +2,7 @@ package controller;
 
 import model.bo.Color;
 import service.ColorService;
-import view.TelaBusBairro;
+import view.TelaBusColor;
 import view.TelaCadColor;
 
 import java.awt.event.ActionEvent;
@@ -67,9 +67,9 @@ public final class ControllerCadColor extends BaseController implements ActionLi
     }
 
     public void search() {
-        TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-        ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-        telaBusBairro.setVisible(true);
+        TelaBusColor searchScreen = new TelaBusColor(null, true);
+        ControllerBusColor controllerSearch = new ControllerBusColor(searchScreen);
+        searchScreen.setVisible(true);
 
         if (code != 0) {
             Color model;

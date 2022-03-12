@@ -57,9 +57,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         Cor = new javax.swing.JMenuItem();
         Tamanho = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenuItem();
         menuFornecedor = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -153,6 +156,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(Tamanho);
 
+        jMenuItem4.setText("Tipo de Produto");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem4);
+
         jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Pessoas");
@@ -174,6 +185,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(menuFornecedor);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu7.setText("Pagamento");
+
+        jMenuItem5.setText("Condição de pagamento");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -240,6 +263,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         telaCadSize.setVisible(true);
     }//GEN-LAST:event_TamanhoActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        TelaCadProductType telaCadProductType = new TelaCadProductType();
+        ControllerCadProductType controller = new ControllerCadProductType(telaCadProductType);
+        telaCadProductType.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        TelaCadPaymentCondition telaCadPaymentCondition = new TelaCadPaymentCondition();
+        ControllerCadPaymentCondition controller = new ControllerCadPaymentCondition(telaCadPaymentCondition);
+        telaCadPaymentCondition.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,6 +322,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -296,6 +332,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;

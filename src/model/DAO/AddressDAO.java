@@ -45,7 +45,7 @@ public class AddressDAO implements InterfaceDAO<Endereco> {
 
     @Override
     public List<Endereco> retrieve() {
-        String sqlExecutar = "SELECT * FROM endereco";
+        String sqlExecutar = "SELECT idcep, cepCep, logradouroCep, bairro_idbairro, cidade_idcidade FROM endereco";
         Connection conexao = ConnectionFactory.getConnection();
         List<Endereco> cidades = new ArrayList<>();
 

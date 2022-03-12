@@ -30,7 +30,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
     }
 
     private void preencheCidades() {
-        String sqlExecutar = "SELECT * FROM cidade";
+        String sqlExecutar = "SELECT idcidade, descricaoCidade, ufCidade FROM cidade";
         Connection conexao = ConnectionFactory.getConnection();
 
         try {
@@ -49,7 +49,7 @@ public class TelaCadEndereco extends javax.swing.JFrame implements BaseMenuButto
     }
 
     private void preencheBairros() {
-        String sqlExecutar = "SELECT * FROM bairro";
+        String sqlExecutar = "SELECT idbairro, descricaoBairro FROM bairro";
         Connection conexao = ConnectionFactory.getConnection();
 
         try {

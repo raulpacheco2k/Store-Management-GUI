@@ -28,7 +28,7 @@ public class TelaCadFornecedor extends javax.swing.JFrame implements BaseMenuBut
     }
 
     private void preencheEndereco() {
-        String sqlExecutar = "SELECT * FROM endereco";
+        String sqlExecutar = "SELECT idcep, cepCep, logradouroCep, bairro_idbairro, cidade_idcidade FROM endereco";
         Connection conexao = ConnectionFactory.getConnection();
 
         try {

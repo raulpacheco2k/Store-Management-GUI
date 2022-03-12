@@ -2,7 +2,7 @@ package controller;
 
 import model.bo.Size;
 import service.SizeService;
-import view.TelaBusBairro;
+import view.TelaBusSize;
 import view.TelaCadSize;
 
 import java.awt.event.ActionEvent;
@@ -67,13 +67,12 @@ public final class ControllerCadSize extends BaseController implements ActionLis
     }
 
     public void search() {
-        TelaBusBairro telaBusBairro = new TelaBusBairro(null, true);
-        ControllerBusBairro controllerBusBairro = new ControllerBusBairro(telaBusBairro);
-        telaBusBairro.setVisible(true);
+        TelaBusSize searchScreen = new TelaBusSize(null, true);
+        ControllerBusSize searchController = new ControllerBusSize(searchScreen);
+        searchScreen.setVisible(true);
 
         if (code != 0) {
-            Size model;
-            model = this.service.buscar(code);
+            Size model = this.service.buscar(code);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

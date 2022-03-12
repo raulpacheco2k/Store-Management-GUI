@@ -100,6 +100,7 @@ public class SizeDAO extends GenericDAO<Size> implements InterfaceDAO<Size> {
         try {
             super.preparedStatement = super.sqlCode(model.update());
             super.preparedStatement.setString(1, model.getDescription());
+            super.preparedStatement.setInt(2, model.getId());
             super.preparedStatement.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

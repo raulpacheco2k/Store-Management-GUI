@@ -48,7 +48,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Cadastros");
 
-        menuCidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuCidades.setText("Cidades");
         menuCidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +56,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCidades);
 
-        menuBairro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuBairro.setText("Bairro");
         menuBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +64,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuBairro);
 
-        menuEndereco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuEndereco.setText("Endereço");
         menuEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +72,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuEndereco);
 
-        menuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuCliente.setText("Cliente");
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +80,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuCliente);
 
-        menuFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuFornecedor.setText("Fornecedor");
         menuFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

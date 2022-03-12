@@ -10,6 +10,7 @@ public class PaymentConditionDAO extends GenericDAO<PaymentCondition> implements
     PaymentCondition model = new PaymentCondition();
 
     public void setValuesForRetrieve(PaymentCondition model) throws SQLException {
+        model.setId(super.resultSet.getInt("idcondicaoPagamento"));
         model.setConditionDescription(super.resultSet.getString("descricaoCondicaoPagamento"));
         model.setDaysUntilFirstInstallment(super.resultSet.getInt("numDiasAtePrimeiraParcela"));
         model.setDaysBetweenInstallments(super.resultSet.getInt("numDiasEntreParcelas"));

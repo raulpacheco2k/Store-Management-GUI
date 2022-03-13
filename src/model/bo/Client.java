@@ -9,8 +9,16 @@ public class Client extends Pessoa {
     private String rgCliente;
     private String foneCliente;
     private String fone2Cliente;
-    public int idEndereco;
+    private int idEndereco;
 
+    public Client setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
+        return this;
+    }
+
+    public int getIdEndereco() {
+        return idEndereco;
+    }
 
     public Client() {
     }
@@ -63,6 +71,10 @@ public class Client extends Pessoa {
         java.util.Date utilDate = this.getDtNasc();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         return sqlDate;
+    }
+
+    public Endereco getEndereco() {
+        return super.getEndereco();
     }
 
     public void setDtNasc(Date dtNasc) {

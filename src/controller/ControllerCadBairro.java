@@ -72,9 +72,7 @@ public final class ControllerCadBairro extends BaseController implements ActionL
         telaBusBairro.setVisible(true);
 
         if (codigo != 0) {
-            Bairro bairro;
-            
-            bairro = this.service.buscar(codigo);
+            Bairro bairro = this.service.buscar(codigo);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

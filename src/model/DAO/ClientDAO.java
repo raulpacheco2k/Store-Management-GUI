@@ -3,6 +3,7 @@ package model.DAO;
 import model.bo.Client;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -23,14 +24,14 @@ public class ClientDAO implements InterfaceDAO<Client> {
             assert conexao != null;
             pstm = conexao.prepareStatement(sqlExecutar);
             pstm.setString(1, objeto.getNome());
-            pstm.setDate(2, objeto.getDtNascToSql());
+            pstm.setDate(2, new Date(objeto.getDtNasc().getTime()));
             pstm.setString(3, objeto.getCpfCliente());
             pstm.setString(4, objeto.getRgCliente());
             pstm.setString(5, objeto.getFoneCliente());
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
-            pstm.setInt(9, objeto.idEndereco);
+            pstm.setInt(9, objeto.getIdEndereco());
 
             pstm.executeUpdate();
         } catch (Exception ex) {
@@ -99,6 +100,7 @@ public class ClientDAO implements InterfaceDAO<Client> {
                 client.setFoneCliente((rst.getString("foneCliente")));
                 client.setFone2Cliente((rst.getString("fone2Cliente")));
                 client.setEmail((rst.getString("emailCliente")));
+                client.setIdEndereco(rst.getInt("endereco_idcep"));
                 client.setCompleEndereco((rst.getString("compleEnderecoCliente")));
             }
             ConnectionFactory.closeConnection(conexao, pstm, rst);
@@ -167,14 +169,14 @@ public class ClientDAO implements InterfaceDAO<Client> {
             pstm = conexao.prepareStatement(sqlExecutar);
 
             pstm.setString(1, objeto.getNome());
-            pstm.setString(2, objeto.getDtNasc().toString());
+            pstm.setDate(2, new Date(objeto.getDtNasc().getTime()));
             pstm.setString(3, objeto.getCpfCliente());
             pstm.setString(4, objeto.getRgCliente());
             pstm.setString(5, objeto.getFoneCliente());
             pstm.setString(6, objeto.getFone2Cliente());
             pstm.setString(7, objeto.getEmail());
             pstm.setString(8, objeto.getCompleEndereco());
-            pstm.setInt(9, objeto.idEndereco);
+            pstm.setInt(9, objeto.getEndereco().getIdCep());
             pstm.setInt(10, objeto.getIdCliente());
 
             pstm.executeUpdate();

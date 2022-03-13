@@ -29,6 +29,8 @@ public class BaseController {
             } else if (componenteAtual instanceof JComboBox) {
                 ((JComboBox) componenteAtual).setSelectedIndex(0);
                 componenteAtual.setEnabled(estado);
+            } else if (componenteAtual instanceof JButton) {
+                componenteAtual.setEnabled(estado);
             }
         }
     }

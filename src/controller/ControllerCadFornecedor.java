@@ -4,6 +4,8 @@ import model.bo.Endereco;
 import model.bo.Fornecedor;
 import service.AddressService;
 import service.FornecedorService;
+import service.FornecedorService;
+import view.TelaBusFornecedor;
 import view.TelaCadFornecedor;
 
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
     TelaCadFornecedor screen;
     FornecedorService service;
     AddressService addressService;
-    public static int codigo;
+    public static int code;
 
     public ControllerCadFornecedor() {
     }
@@ -79,21 +81,26 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
     }
 
     public void search() {
-        codigo = 0;
-        // TelaBusAddress telaBusAddress = new TelaBusAddress(null, true);
-        // ControllerBusAddress controllerBusAddress = new ControllerBusAddress(telaBusAddress);
-        // telaBusAddress.setVisible(true);
+        TelaBusFornecedor telaBusFornecedor = new TelaBusFornecedor(null, true);
+        ControllerBusFornececdor controllerBusFornecedor = new ControllerBusFornececdor(telaBusFornecedor);
+        telaBusFornecedor.setVisible(true);
 
-        if (codigo != 0) {
-            Endereco endereco;
+        if (code != 0) {
+            Fornecedor model;
 
-            // endereco = this.service.buscar(codigo);
+            model = this.service.buscar(code);
 
-            super.creationState(this.screen, false);
+            super.creationState(this.screen, true);
             super.enableFieldsForCreation(this.screen, true);
 
-            // this.screen.getId().setText(endereco.getIdCep() + "");
-            // this.screen.getStreet().setText(endereco.getLogradouroCep());
+            this.screen.getId().setText(model.getIdFornecedor() + "");
+            this.screen.getNomeFantasia().setText(model.getNome());
+            this.screen.getRazaoSocial().setText(model.getRazaoSocialFornecedor());
+            this.screen.getCnpj().setText(model.getCnpjFornecedor());
+            this.screen.getCompleto().setText(model.getCompleEndereco());
+            this.screen.getInscricaoEstadual().setText(model.getInscEstadualFornecedor());
+            this.screen.getEmail().setText(model.getEmail());
+            this.screen.getCep().getModel().setSelectedItem(model.getEndereco());
 
             this.screen.getId().setEnabled(false);
         }

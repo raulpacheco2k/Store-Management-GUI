@@ -175,9 +175,9 @@
                   <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                     <Column editable="false" title="CEP" type="java.lang.String"/>
-                    <Column editable="true" title="Rua" type="java.lang.String"/>
                     <Column editable="true" title="Cidade" type="java.lang.Object"/>
                     <Column editable="true" title="Bairro" type="java.lang.Object"/>
+                    <Column editable="true" title="Rua" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

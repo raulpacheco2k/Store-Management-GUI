@@ -94,9 +94,7 @@ public class ControllerCadAddress extends BaseController implements ActionListen
         telaBusAddress.setVisible(true);
 
         if (codigo != 0) {
-            Endereco endereco;
-
-            endereco = this.service.buscar(codigo);
+            Endereco endereco = this.service.buscar(codigo);
 
             super.creationState(this.screen, true);
             super.enableFieldsForCreation(this.screen, true);

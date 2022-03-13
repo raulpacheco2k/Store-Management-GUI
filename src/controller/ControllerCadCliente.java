@@ -1,6 +1,7 @@
 package controller;
 
 import model.bo.Client;
+import service.AddressService;
 import service.ClientService;
 import view.TelaBusCliente;
 import view.TelaCadCliente;
@@ -15,12 +16,12 @@ import java.util.logging.Logger;
 public class ControllerCadCliente extends BaseController implements ActionListener {
 
     TelaCadCliente screen;
-    ControllerCadAddress controllerCadAddress;
+    ControllerCadAddress controllerCadAddress = new ControllerCadAddress();
+    AddressService addressService = new AddressService();
     public static int codigo;
 
     public ControllerCadCliente(TelaCadCliente screen) {
         this.screen = screen;
-        this.controllerCadAddress = new ControllerCadAddress();
 
         screen.getjButtonBuscar().addActionListener(this);
         screen.getjButtonNovo().addActionListener(this);
@@ -28,6 +29,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         screen.getjButtonGravar().addActionListener(this);
         screen.getjButtonSair().addActionListener(this);
 
+        this.screen.getBuscarCep().setEnabled(false);
         super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
     }
@@ -51,6 +53,9 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         creationState(this.screen, true);
         enableFieldsForCreation(this.screen, true);
         this.screen.getId().setEnabled(false);
+        this.screen.getBairro().setEnabled(false);
+        this.screen.getCidade().setEnabled(false);
+        this.screen.getEstado().setEnabled(false);
     }
 
     public void store() {
@@ -58,7 +63,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setNome(this.screen.getFullName().getText());
 
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             client.setDtNasc(dateFormat.parse(this.screen.getDateOfBirth().getText()));
         } catch (ParseException ex) {
             Logger.getLogger(ControllerCadCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,11 +74,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
-        client.idEndereco = Integer.parseInt(this.screen.getId().getText());
-
-        int endereco = this.screen.getCepList().getIdCep();
-
-        client.setEndereco(endereco);
+        client.setEndereco(this.addressService.buscar(this.screen.getCep().getText()));
         client.setCompleEndereco(this.screen.getComplement().getText());
 
         ClientService clientService = new ClientService();
@@ -110,11 +111,17 @@ public class ControllerCadCliente extends BaseController implements ActionListen
             this.screen.getTelephone_2().setText(client.getFone2Cliente());
             this.screen.getEmail().setText(client.getEmail());
             this.screen.getComplement().setText(client.getCompleEndereco());
-            this.screen.getDateOfBirth().setText(String.valueOf(client.getDtNasc()));
-            // this.screen.getCepList().getModel().setSelectedItem(endereco.getCidade());
-
-
-
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            this.screen.getDateOfBirth().setText(format.format(client.getDtNasc()));
+            String cep = this.addressService.buscar(client.getIdEndereco()).getCepCep();
+            this.screen.getCep().setText(cep);
+            this.screen.getCep().setText(cep);
+            this.screen.getBairro().setText(String.valueOf(this.addressService.buscar(client.getIdEndereco()).getBairro()));
+            this.screen.getCidade().setText(String.valueOf(this.addressService.buscar(client.getIdEndereco()).getCidade()));
+            this.screen.getEstado().setText(this.addressService.buscar(client.getIdEndereco()).getCidade().getUfCidade());
+            this.screen.getBairro().setEnabled(false);
+            this.screen.getCidade().setEnabled(false);
+            this.screen.getEstado().setEnabled(false);
             this.screen.getId().setEnabled(false);
         }
     }

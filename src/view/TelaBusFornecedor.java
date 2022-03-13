@@ -5,17 +5,16 @@
  */
 package view;
 
-import javax.swing.*;
-
 /**
  * @author house
  */
-public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButtonsInterface {
+public class TelaBusFornecedor extends javax.swing.JDialog {
+
 
     /**
      * Creates new form FormModeloBuscas
      */
-    public TelaBusCliente(java.awt.Frame parent, boolean modal) {
+    public TelaBusFornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -49,7 +48,7 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Busca de Clientes");
+        jLabel1.setText("Busca de Fornecedor");
 
         javax.swing.GroupLayout jPanelTituloLayout = new javax.swing.GroupLayout(jPanelTitulo);
         jPanelTitulo.setLayout(jPanelTituloLayout);
@@ -101,14 +100,14 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
 
             },
             new String [] {
-                "Código", "Nome", "CPF"
+                "Id", "Nome", "CNPJ"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -121,7 +120,8 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
         });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
@@ -160,18 +160,14 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaBusCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModeloBuscas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaBusCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModeloBuscas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaBusCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModeloBuscas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaBusCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModeloBuscas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -180,7 +176,7 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaBusCliente dialog = new TelaBusCliente(new javax.swing.JFrame(), true);
+                ModeloBuscas dialog = new ModeloBuscas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -201,45 +197,17 @@ public class TelaBusCliente extends javax.swing.JDialog implements BaseMenuButto
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    // End of variables declaration//GEN-END:variables
 
-    @Override
-    public JButton getjButtonBuscar() {
-        return null;
-    }
-
-    @Override
-    public JButton getjButtonCarregar() {
+    public javax.swing.JButton getjButtonCarregar() {
         return jButtonCarregar;
     }
 
-    @Override
-    public JButton getjButtonCancelar() {
-        return null;
-    }
-
-    @Override
-    public JButton getjButtonGravar() {
-        return null;
-    }
-
-    @Override
-    public JButton getjButtonNovo() {
-        return null;
-    }
-
-    @Override
-    public JButton getjButtonSair() {
+    public javax.swing.JButton getjButtonSair() {
         return jButtonSair;
     }
 
-    @Override
-    public JPanel getjPanelDados() {
-        return jPanelDados;
-    }
-    // End of variables declaration//GEN-END:variables
-
-
-    public JTable getjTable1() {
+    public javax.swing.JTable getjTable1() {
         return jTable1;
     }
 }

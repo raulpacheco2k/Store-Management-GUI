@@ -72,8 +72,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
         telaBusCidade.setVisible(true);
 
         if (codigo != 0) {
-            Cidade cidade;
-            cidade = this.service.buscar(codigo);
+            Cidade cidade = this.service.buscar(codigo);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

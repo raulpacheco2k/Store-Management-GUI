@@ -99,11 +99,11 @@ public class TelaBusAddress extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Código", "CEP", "Rua", "Cidade", "Bairro"
+                "Código", "CEP", "Cidade", "Bairro", "Rua"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, true, true, true

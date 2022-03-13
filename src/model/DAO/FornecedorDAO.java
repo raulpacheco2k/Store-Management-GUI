@@ -19,7 +19,7 @@ public class FornecedorDAO extends GenericDAO<Fornecedor> implements InterfaceDA
         model.setInscEstadualFornecedor(super.resultSet.getString("inscEstadualFornecedor"));
         model.setEmail(super.resultSet.getString("emailFornecedor"));
         model.setCompleEndereco(super.resultSet.getString("compleEnderecofornecedor"));
-        model.setEndereco(addressService.buscar(super.resultSet.getString("inscEstadualFornecedor")));
+        model.setEndereco(addressService.buscar(super.resultSet.getInt("endereco_idcep")));
     }
 
     @Override

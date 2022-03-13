@@ -1,16 +1,13 @@
 package controller;
 
-import model.bo.Endereco;
 import model.bo.Fornecedor;
 import service.AddressService;
-import service.FornecedorService;
 import service.FornecedorService;
 import view.TelaBusFornecedor;
 import view.TelaCadFornecedor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class ControllerCadFornecedor extends BaseController implements ActionListener {
 
@@ -34,6 +31,9 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
         screen.getjButtonGravar().addActionListener(this);
         screen.getjButtonSair().addActionListener(this);
 
+        this.screen.getBairro().setEnabled(false);
+        this.screen.getCidade().setEnabled(false);
+        this.screen.getEstado().setEnabled(false);
         super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
     }
@@ -66,8 +66,8 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
                 this.screen.getInscricaoEstadual().getText(),
                 this.screen.getNomeFantasia().getText(),
                 this.screen.getEmail().getText(),
-                this.screen.getCompleto().getText(),
-                this.addressService.buscar(((Endereco) Objects.requireNonNull(this.screen.getCep().getSelectedItem())).getIdCep())
+                this.screen.getjTFComplemento().getText(),
+                this.addressService.buscar(this.screen.getCep().getText())
         );
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
@@ -97,11 +97,19 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
             this.screen.getNomeFantasia().setText(model.getNome());
             this.screen.getRazaoSocial().setText(model.getRazaoSocialFornecedor());
             this.screen.getCnpj().setText(model.getCnpjFornecedor());
-            this.screen.getCompleto().setText(model.getCompleEndereco());
+            this.screen.getjTFComplemento().setText(model.getCompleEndereco());
             this.screen.getInscricaoEstadual().setText(model.getInscEstadualFornecedor());
             this.screen.getEmail().setText(model.getEmail());
-            this.screen.getCep().getModel().setSelectedItem(model.getEndereco());
 
+            String cep = this.addressService.buscar(model.getEndereco().getIdCep()).getCepCep();
+            this.screen.getCep().setText(cep);
+            this.screen.getBairro().setText(String.valueOf(this.addressService.buscar(model.getEndereco().getIdCep()).getBairro()));
+            this.screen.getCidade().setText(String.valueOf(this.addressService.buscar(model.getEndereco().getIdCep()).getCidade()));
+            this.screen.getEstado().setText(this.addressService.buscar(model.getEndereco().getIdCep()).getCidade().getUfCidade());
+
+            this.screen.getBairro().setEnabled(false);
+            this.screen.getCidade().setEnabled(false);
+            this.screen.getEstado().setEnabled(false);
             this.screen.getId().setEnabled(false);
         }
     }

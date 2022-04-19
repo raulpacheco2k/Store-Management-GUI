@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2022.
+ * Raul Pacheco Domingos (raulpacheco2k)
+ * https://github.com/raulpacheco2k
+ * https://linkedin.com/in/raulpacheco2k/
+ * https://twitter.com/raulpacheco2k
+ */
+
+package br.com.raulpacheco.models.bo;
+
+public abstract class Model implements HasTable {
+    private String table;
+
+    public Model setTable(String table) {
+        this.table = table;
+        return this;
+    }
+
+    public String getTable() {
+        return table;
+    }
+}

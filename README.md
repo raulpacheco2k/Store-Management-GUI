@@ -1,3 +1,3 @@
 # Store Management GUI
 
-![](https://raw.githubusercontent.com/raulpacheco2k/store-management-gui/master/docs/images/interface.png)
+![](https://raw.githubusercontent.com/raulpacheco2k/Store-Managemen-GUI/master/docs/images/interface.png)

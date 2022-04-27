@@ -23,7 +23,7 @@ public class ControllerBusClient implements ActionListener {
 
         ClientService clientService = new ClientService();
 
-        for (Client client : clientService.buscar()) {
+        for (Client client : clientService.search()) {
             tabela.addRow(new Object[]{
                     client.getIdCliente(),
                     client.getNome(),

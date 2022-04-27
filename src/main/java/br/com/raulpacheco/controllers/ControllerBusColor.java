@@ -38,7 +38,7 @@ public class ControllerBusColor implements ActionListener {
     }
 
     public void fillData() {
-        for (Color model : this.service.buscar()) {
+        for (Color model : this.service.search()) {
             this.table.addRow(new Object[]{
                     model.getId(),
                     model.getDescription(),

@@ -393,7 +393,7 @@ public class TelaCadFornecedor extends JFrame implements BaseMenuButtonsInterfac
     }
 
     private void buscarCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCepActionPerformed
-        Endereco endereco = this.addressService.buscar(this.getCep().getText());
+        Endereco endereco = this.addressService.search(this.getCep().getText());
 
         if (endereco.getIdCep() != 0) {
             this.getCidade().setText(endereco.getCidade().getDescricaoCidade());

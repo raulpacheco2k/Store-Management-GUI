@@ -67,21 +67,21 @@ public class ControllerCadAddress extends BaseController implements ActionListen
         address.setCepCep(this.screen.getZipCode().getText());
         address.setLogradouroCep(this.screen.getStreet().getText());
         address.setBairro(
-                this.bairroService.buscar(
+                this.bairroService.search(
                         ((Bairro) Objects.requireNonNull(this.screen.getNeighborhood().getSelectedItem())).getIdBairro()
 
                 ));
         address.setCidade(
-                this.cidadeService.buscar(
+                this.cidadeService.search(
                         ((Cidade) Objects.requireNonNull(this.screen.getCity().getSelectedItem())).getIdCidade()
                 ));
 
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(address);
+            this.service.store(address);
         } else {
             address.setIdCep(Integer.parseInt(this.screen.getId().getText()));
-            this.service.atualizar(address);
+            this.service.update(address);
         }
         super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
@@ -94,7 +94,7 @@ public class ControllerCadAddress extends BaseController implements ActionListen
         telaBusAddress.setVisible(true);
 
         if (codigo != 0) {
-            Endereco endereco = this.service.buscar(codigo);
+            Endereco endereco = this.service.search(codigo);
 
             super.creationState(this.screen, true);
             super.enableFieldsForCreation(this.screen, true);
@@ -111,7 +111,7 @@ public class ControllerCadAddress extends BaseController implements ActionListen
 
     public static Endereco busca(int id) {
         AddressService addressService = new AddressService();
-        return addressService.buscar(id);
+        return addressService.search(id);
     }
 
     public void exit() {

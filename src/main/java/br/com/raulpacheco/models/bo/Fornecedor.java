@@ -1,7 +1,15 @@
 package br.com.raulpacheco.models.bo;
 
-public class Fornecedor extends Pessoa {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "fornecedor")
+public class Fornecedor extends Pessoa {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int idFornecedor;
     private String razaoSocialFornecedor;
     private String cnpjFornecedor;
@@ -9,7 +17,6 @@ public class Fornecedor extends Pessoa {
     public int idEndereco;
 
     public Fornecedor() {
-        setTable("fornecedor");
     }
 
     public Fornecedor(String razaoSocialFornecedor, String cnpjFornecedor, String inscEstadualFornecedor, String nome, String email, String compleEndereco, Endereco endereco) {
@@ -18,7 +25,6 @@ public class Fornecedor extends Pessoa {
         this.cnpjFornecedor = cnpjFornecedor;
         this.inscEstadualFornecedor = inscEstadualFornecedor;
         this.idEndereco = endereco.getIdCep();
-        setTable("fornecedor");
     }
 
     public int getIdFornecedor() {
@@ -70,35 +76,5 @@ public class Fornecedor extends Pessoa {
                 this.getEndereco().getCepCep() + "," +
                 this.getEndereco().getLogradouroCep() +
                 this.getCompleEndereco();
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO fornecedor (razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable();
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable() + " WHERE idfornecedor = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idfornecedor, razaoSocialFornecedor, nomeFantasiaFornecedor, cnpjFornecedor, inscEstadualFornecedor, emailFornecedor, compleEnderecofornecedor, endereco_idcep FROM " + getTable() + " WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + getTable() + " SET razaoSocialFornecedor = ?, nomeFantasiaFornecedor = ?, cnpjFornecedor = ?, inscEstadualFornecedor = ?, emailFornecedor = ?, compleEnderecofornecedor = ?, endereco_idcep = ? WHERE idfornecedor = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

@@ -56,10 +56,10 @@ public final class ControllerCadColor extends BaseController implements ActionLi
         model.setDescription(this.screen.getNome().getText());
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(model);
+            this.service.store(model);
         } else {
             model.setId(Integer.parseInt(this.screen.getId().getText()));
-            this.service.atualizar(model);
+            this.service.update(model);
         }
 
         creationState(this.screen, false);
@@ -73,7 +73,7 @@ public final class ControllerCadColor extends BaseController implements ActionLi
 
         if (code != 0) {
             Color model;
-            model = this.service.buscar(code);
+            model = this.service.search(code);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

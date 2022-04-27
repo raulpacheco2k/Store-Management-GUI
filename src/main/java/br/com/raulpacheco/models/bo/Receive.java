@@ -1,16 +1,16 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class Receive extends Model {
+@Entity
+@Table
+public class Receive  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private int sale_id;
     private Date dateIssuance;
@@ -23,7 +23,6 @@ public class Receive extends Model {
     private int status;
 
     public Receive() {
-        setTable("receber");
     }
 
     public Receive(int id, int sale_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
@@ -37,7 +36,6 @@ public class Receive extends Model {
         this.discount = discount;
         this.amountPaid = amountPaid;
         this.status = status;
-        setTable("receber");
     }
 
     public int getId() {
@@ -128,35 +126,5 @@ public class Receive extends Model {
     public Receive setStatus(int status) {
         this.status = status;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO receber (venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber";
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber WHERE idpagar = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idreceber, venda_idvenda, dtHrEmissaoRec, valEmissaoRec, dtVencimentoRec, dtPgtoRec, acrescimeRec, descontoRec, valPagoRec, statusRec FROM receber WHERE" + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE receber SET venda_idvenda = ?, dtHrEmissaoRec = ?, valEmissaoRec = ?, dtVencimentoRec = ?, dtPgtoRec = ?, acrescimeRec = ?, descontoRec = ?, valPagoRec = ?, statusRec = ? WHERE idreceber = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

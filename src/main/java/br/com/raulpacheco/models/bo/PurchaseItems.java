@@ -1,14 +1,15 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
-public class PurchaseItems extends Model {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class PurchaseItems  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private int purchase_id;
     private int productCharacteristics_id;
@@ -16,7 +17,6 @@ public class PurchaseItems extends Model {
     private float unitaryValue;
 
     public PurchaseItems() {
-        setTable("itenscompra");
     }
 
     public PurchaseItems(int id, int purchase_id, int productCharacteristics_id, float quantity, float unitaryValue) {
@@ -25,7 +25,6 @@ public class PurchaseItems extends Model {
         this.productCharacteristics_id = productCharacteristics_id;
         this.quantity = quantity;
         this.unitaryValue = unitaryValue;
-        setTable("itenscompra");
     }
 
     public int getId() {
@@ -71,35 +70,5 @@ public class PurchaseItems extends Model {
     public PurchaseItems setUnitaryValue(float unitaryValue) {
         this.unitaryValue = unitaryValue;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO " + this.getTable() + " (compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto) VALUES (?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable();
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable() + " WHERE idtipoProduto = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT iditensCompra, compra_idcompra, caracteristicaProduto_idCaracterisitcaProduto, qtdProduto, valunitarioProduto FROM " + this.getTable() + " WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + this.getTable() + " SET compra_idcompra = ?, caracteristicaProduto_idCaracterisitcaProduto = ?, qtdProduto = ?, valunitarioProduto = ? WHERE iditensCompra = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

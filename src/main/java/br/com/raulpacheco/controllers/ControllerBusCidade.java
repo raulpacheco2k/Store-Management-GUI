@@ -23,7 +23,7 @@ public class ControllerBusCidade implements ActionListener {
 
         CidadeService cidadeService = new CidadeService();
 
-        for (Cidade cidadeAtualDaLista : cidadeService.buscar()) {
+        for (Cidade cidadeAtualDaLista : cidadeService.search()) {
             tabela.addRow(new Object[]{
                     cidadeAtualDaLista.getIdCidade(),
                     cidadeAtualDaLista.getDescricaoCidade(),
@@ -35,7 +35,7 @@ public class ControllerBusCidade implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.telaBusCidade.getjButtonCarregar()) {
-            ControllerCadCidade.codigo =
+            ControllerCadCidade.id =
                     (int) this.telaBusCidade.getjTable1().getValueAt(this.telaBusCidade.getjTable1().getSelectedRow(), 0);
             this.telaBusCidade.dispose();
         } else if (e.getSource() == this.telaBusCidade.getjButtonSair()) {

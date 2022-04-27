@@ -38,7 +38,7 @@ public class ControllerBusSize implements ActionListener {
     }
 
     public void fillData() {
-        for (Size model : this.addressService.buscar()) {
+        for (Size model : this.addressService.search()) {
             this.table.addRow(new Object[]{
                     model.getId(),
                     model.getDescription(),

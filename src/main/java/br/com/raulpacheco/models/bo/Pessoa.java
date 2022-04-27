@@ -1,6 +1,6 @@
 package br.com.raulpacheco.models.bo;
 
-public abstract class Pessoa extends Model {
+public abstract class Pessoa  {
     private String nome;
     private String email;
     private String compleEndereco;

@@ -68,10 +68,10 @@ public final class ControllerCadSale implements ActionListener {
 //        bairro.setDescricaoBairro(this.screen.getNeighborhood().getText());
 //
 //        if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-//            this.service.salvar(bairro);
+//            this.service.store(bairro);
 //        } else {
 //            bairro.setIdBairro(Integer.parseInt(this.screen.getId().getText()));
-//            this.service.atualizar(bairro);
+//            this.service.update(bairro);
 //        }
     }
 
@@ -84,7 +84,7 @@ public final class ControllerCadSale implements ActionListener {
         if (codigo != 0) {
             ProductCharacteristics productCharacteristics;
 
-            productCharacteristics = this.productCharacteristicsService.buscar(codigo);
+            productCharacteristics = this.productCharacteristicsService.search(codigo);
 
             // this.screen.getId().setText(bairro.getIdBairro() + "");
             // this.screen.getNeighborhood().setText(bairro.getDescricaoBairro());

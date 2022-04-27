@@ -1,20 +1,19 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Pay extends Model {
+@Entity
+@Table(name = "pagar")
+public class Pay  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private int purchase_id;
     private Date dateIssuance;
+    @Temporal(TemporalType.DATE)
     private Date dueDate;
+    @Temporal(TemporalType.DATE)
     private Date payDate;
     private float issuanceValue;
     private float addition;
@@ -23,7 +22,6 @@ public class Pay extends Model {
     private int status;
 
     public Pay() {
-        setTable("pagar");
     }
 
     public Pay(int id, int purchase_id, Date dateIssuance, Date dueDate, Date payDate, float issuanceValue, float addition, float discount, float amountPaid, int status) {
@@ -37,7 +35,6 @@ public class Pay extends Model {
         this.discount = discount;
         this.amountPaid = amountPaid;
         this.status = status;
-        setTable("pagar");
     }
 
     public int getId() {
@@ -128,35 +125,5 @@ public class Pay extends Model {
     public Pay setStatus(int status) {
         this.status = status;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO pagar (compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ) ";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar";
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar WHERE idpagar = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idpagar, compra_idcompra, dtHrEmissaoPagar, dtVencimentoPagar, valemitidoPagar, acrescimoPagar, descontoPagar, dtHrPgtoPagar, valPagoPagar, statusPagar FROM pagar WHERE" + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE pagar SET compra_idcompra = ?, dtHrEmissaoPagar = ?, dtVencimentoPagar = ?, valemitidoPagar = ?, acrescimoPagar = ?, descontoPagar = ?, dtHrPgtoPagar = ?, valPagoPagar = ?, statusPagar = ? WHERE idpagar = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

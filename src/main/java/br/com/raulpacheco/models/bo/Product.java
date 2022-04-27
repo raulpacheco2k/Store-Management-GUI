@@ -1,14 +1,15 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
-public class Product extends Model {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Product  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private String description;
     private float value;
@@ -17,7 +18,6 @@ public class Product extends Model {
     private int product_size;
 
     public Product() {
-        setTable("produto");
     }
 
     public Product(int id, String description, float value, int brand_id, int product_type, int product_size) {
@@ -27,7 +27,6 @@ public class Product extends Model {
         this.brand_id = brand_id;
         this.product_type = product_type;
         this.product_size = product_size;
-        setTable("produto");
     }
 
     public int getId() {
@@ -82,35 +81,5 @@ public class Product extends Model {
     public Product setProduct_size(int product_size) {
         this.product_size = product_size;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO " + getTable() + "(descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho) VALUES (?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable();
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable() + " WHERE idproduto = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idproduto, descricaoProduto, valProduto, marca_idmarca, tipoProduto_idtipoProduto, tamanho_idtamanho FROM " + getTable() + " WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + getTable() + " SET descricaoProduto = ?, valProduto = ?, marca_idmarca = ?, tipoProduto_idtipoProduto = ?, tamanho_idtamanho = ? WHERE idproduto = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

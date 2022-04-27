@@ -38,7 +38,7 @@ public class ControllerBusPaymentCondition implements ActionListener {
     }
 
     public void fillData() {
-        for (PaymentCondition model : this.service.buscar()) {
+        for (PaymentCondition model : this.service.search()) {
             this.table.addRow(new Object[]{
                     model.getId(),
                     model.getConditionDescription(),

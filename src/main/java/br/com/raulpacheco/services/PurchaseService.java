@@ -5,42 +5,9 @@ import br.com.raulpacheco.models.bo.Purchase;
 
 import java.util.List;
 
-public class PurchaseService implements InterfaceService<Purchase> {
+public class PurchaseService extends GenericService<Purchase, PurchaseDAO> {
 
-    @Override
-    public void salvar(Purchase objeto) {
-        PurchaseDAO model = new PurchaseDAO();
-        model.create(objeto);
+    public PurchaseService() {
+        super(new PurchaseDAO());
     }
-
-    @Override
-    public List<Purchase> buscar() {
-        PurchaseDAO model = new PurchaseDAO();
-        return model.retrieve();
-    }
-
-    @Override
-    public Purchase buscar(int codigo) {
-        PurchaseDAO model = new PurchaseDAO();
-        return model.retrieve(codigo);
-    }
-
-    @Override
-    public Purchase buscar(String descricao) {
-        PurchaseDAO model = new PurchaseDAO();
-        return model.retrieve(descricao);
-    }
-
-    @Override
-    public void atualizar(Purchase objeto) {
-        PurchaseDAO model = new PurchaseDAO();
-        model.update(objeto);
-    }
-
-    @Override
-    public void apagar(Purchase objeto) {
-        PurchaseDAO model = new PurchaseDAO();
-        model.delete(objeto);
-    }
-
 }

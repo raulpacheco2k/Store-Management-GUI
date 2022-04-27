@@ -1,13 +1,21 @@
 package br.com.raulpacheco.models.bo;
 
-public class PaymentCondition extends Model {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "condicaopagamento")
+public class PaymentCondition  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private String conditionDescription;
     private int daysUntilFirstInstallment;
     private int daysBetweenInstallments;
 
     public PaymentCondition() {
-        setTable("condicaopagamento");
     }
 
     public PaymentCondition(int id, String conditionDescription, int daysUntilFirstInstallment, int daysBetweenInstallments) {
@@ -15,7 +23,6 @@ public class PaymentCondition extends Model {
         this.conditionDescription = conditionDescription;
         this.daysUntilFirstInstallment = daysUntilFirstInstallment;
         this.daysBetweenInstallments = daysBetweenInstallments;
-        setTable("condicaopagamento");
     }
 
     public int getId() {
@@ -52,35 +59,5 @@ public class PaymentCondition extends Model {
     public PaymentCondition setDaysBetweenInstallments(int daysBetweenInstallments) {
         this.daysBetweenInstallments = daysBetweenInstallments;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO " + this.getTable() + " (descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas) VALUES (?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable();
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable() + " WHERE idcondicaoPagamento = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idcondicaoPagamento, descricaoCondicaoPagamento, numDiasAtePrimeiraParcela, numDiasEntreParcelas FROM " + this.getTable() + " WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + this.getTable() + " SET descricaoCondicaoPagamento = ?, numDiasAtePrimeiraParcela = ?, numDiasEntreParcelas = ? WHERE idcondicaoPagamento = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

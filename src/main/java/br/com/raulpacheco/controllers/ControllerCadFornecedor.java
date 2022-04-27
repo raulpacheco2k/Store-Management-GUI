@@ -67,14 +67,14 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
                 this.screen.getNomeFantasia().getText(),
                 this.screen.getEmail().getText(),
                 this.screen.getjTFComplemento().getText(),
-                this.addressService.buscar(this.screen.getCep().getText())
+                this.addressService.search(this.screen.getCep().getText())
         );
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(fornecedor);
+            this.service.store(fornecedor);
         } else {
             fornecedor.setIdFornecedor(Integer.parseInt(this.screen.getId().getText()));
-            this.service.atualizar(fornecedor);
+            this.service.update(fornecedor);
         }
         super.creationState(this.screen, false);
         super.enableFieldsForCreation(this.screen, false);
@@ -88,7 +88,7 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
         if (code != 0) {
             Fornecedor model;
 
-            model = this.service.buscar(code);
+            model = this.service.search(code);
 
             super.creationState(this.screen, true);
             super.enableFieldsForCreation(this.screen, true);
@@ -101,11 +101,11 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
             this.screen.getInscricaoEstadual().setText(model.getInscEstadualFornecedor());
             this.screen.getEmail().setText(model.getEmail());
 
-            String cep = this.addressService.buscar(model.getEndereco().getIdCep()).getCepCep();
+            String cep = this.addressService.search(model.getEndereco().getIdCep()).getCepCep();
             this.screen.getCep().setText(cep);
-            this.screen.getBairro().setText(String.valueOf(this.addressService.buscar(model.getEndereco().getIdCep()).getBairro()));
-            this.screen.getCidade().setText(String.valueOf(this.addressService.buscar(model.getEndereco().getIdCep()).getCidade()));
-            this.screen.getEstado().setText(this.addressService.buscar(model.getEndereco().getIdCep()).getCidade().getUfCidade());
+            this.screen.getBairro().setText(String.valueOf(this.addressService.search(model.getEndereco().getIdCep()).getBairro()));
+            this.screen.getCidade().setText(String.valueOf(this.addressService.search(model.getEndereco().getIdCep()).getCidade()));
+            this.screen.getEstado().setText(this.addressService.search(model.getEndereco().getIdCep()).getCidade().getUfCidade());
 
             this.screen.getBairro().setEnabled(false);
             this.screen.getCidade().setEnabled(false);
@@ -115,7 +115,7 @@ public class ControllerCadFornecedor extends BaseController implements ActionLis
     }
 
     public Fornecedor busca(int id) {
-        return this.service.buscar(id);
+        return this.service.search(id);
     }
 
     public void exit() {

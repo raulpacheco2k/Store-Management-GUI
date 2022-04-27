@@ -1,12 +1,16 @@
 package br.com.raulpacheco.models.bo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "CLIENTE")
+@Table(name = "cliente")
 public class Client extends Pessoa {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int idCliente;
     private Date dtNasc;
     private String cpfCliente;
@@ -37,7 +41,7 @@ public class Client extends Pessoa {
             String email,
             Endereco endereco,
             String compleEndereco
-            ) {
+    ) {
         super(nome, email, compleEndereco, endereco);
         this.dtNasc = dtNasc;
         this.cpfCliente = cpfCliente;
@@ -126,35 +130,5 @@ public class Client extends Pessoa {
                 this.getDtNasc() + "," +
                 this.getFoneCliente() + "," +
                 this.getFone2Cliente();
-    }
-
-    @Override
-    public String insert() {
-        return null;
-    }
-
-    @Override
-    public String findAll() {
-        return null;
-    }
-
-    @Override
-    public String findById() {
-        return null;
-    }
-
-    @Override
-    public String findByField(String string) {
-        return null;
-    }
-
-    @Override
-    public String update() {
-        return null;
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

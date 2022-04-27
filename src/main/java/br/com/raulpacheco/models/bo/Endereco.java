@@ -1,14 +1,21 @@
 package br.com.raulpacheco.models.bo;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Entity
+@Table(name = "endereco")
 public class Endereco {
-  private int idCep;
-  private String cepCep;
-  private String logradouroCep;
-  private Bairro bairro;
-  private Cidade cidade;
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    private int idCep;
+    private String cepCep;
+    private String logradouroCep;
+    @ManyToOne
+    private Bairro bairro;
+    @ManyToOne
+    private Cidade cidade;
 
     public Endereco() {
     }

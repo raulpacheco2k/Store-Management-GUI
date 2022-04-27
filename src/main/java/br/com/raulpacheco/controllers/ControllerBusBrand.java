@@ -38,7 +38,7 @@ public class ControllerBusBrand implements ActionListener {
     }
 
     public void fillData() {
-        for (Brand model : this.service.buscar()) {
+        for (Brand model : this.service.search()) {
             this.table.addRow(new Object[]{
                     model.getId(),
                     model.getDescription(),

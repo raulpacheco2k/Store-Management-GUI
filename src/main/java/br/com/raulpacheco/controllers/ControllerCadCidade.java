@@ -12,7 +12,7 @@ public class ControllerCadCidade extends BaseController implements ActionListene
 
     TelaCadCidade screen;
     CidadeService service;
-    public static int codigo;
+    public static int id;
 
     @SuppressWarnings("LeakingThisInConstructor")
     public ControllerCadCidade(TelaCadCidade screen) {
@@ -56,23 +56,23 @@ public class ControllerCadCidade extends BaseController implements ActionListene
         cidade.setUfCidade(this.screen.getjTFUF().getText());
 
         if (this.screen.getjTFIdCidade().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(cidade);
+            this.service.store(cidade);
         } else {
             cidade.setIdCidade(Integer.parseInt(this.screen.getjTFIdCidade().getText()));
-            this.service.atualizar(cidade);
+            this.service.update(cidade);
         }
         creationState(this.screen, false);
         enableFieldsForCreation(this.screen, false);
     }
 
     public void search() {
-        codigo = 0;
+        id = 0;
         TelaBusCidade telaBusCidade = new TelaBusCidade(null, true);
         ControllerBusCidade controllerBusCidade = new ControllerBusCidade(telaBusCidade);
         telaBusCidade.setVisible(true);
 
-        if (codigo != 0) {
-            Cidade cidade = this.service.buscar(codigo);
+        if (id != 0) {
+            Cidade cidade = this.service.search(id);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

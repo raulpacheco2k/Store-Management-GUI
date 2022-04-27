@@ -38,7 +38,7 @@ public class ControllerBusProductType implements ActionListener {
     }
 
     public void fillData() {
-        for (ProductType model : this.service.buscar()) {
+        for (ProductType model : this.service.search()) {
             this.table.addRow(new Object[]{
                     model.getId(),
                     model.getDescription(),

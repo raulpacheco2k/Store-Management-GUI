@@ -1,14 +1,15 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
-public class Seller extends Model {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Seller  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private String name;
     private String cpf;
@@ -21,7 +22,6 @@ public class Seller extends Model {
     private int address_id;
 
     public Seller() {
-        setTable("vendedor");
     }
 
     public Seller(int id, String name, String cpf, String email, String phone1, String phone2, float salesCommissionPercentage, float paymentCommissionPercentage, String completeAddress, int address_id) {
@@ -35,7 +35,6 @@ public class Seller extends Model {
         this.paymentCommissionPercentage = paymentCommissionPercentage;
         this.completeAddress = completeAddress;
         this.address_id = address_id;
-        setTable("vendedor");
     }
 
     public int getId() {
@@ -126,35 +125,5 @@ public class Seller extends Model {
     public Seller setAddress_id(int address_id) {
         this.address_id = address_id;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO vendedor (nomeVendedor, cpfVendedor, emailVendedor, foneVendedor, fone2Vendedor, percentComissaoVenda, percentComissaoRecebto, compleEnderecoVendedor, endereco_idcep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idvendedor, nomeVendedor, cpfVendedor, emailVendedor, foneVendedor, fone2Vendedor, percentComissaoVenda, percentComissaoRecebto, compleEnderecoVendedor, endereco_idcep FROM vendedor";
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idvendedor, nomeVendedor, cpfVendedor, emailVendedor, foneVendedor, fone2Vendedor, percentComissaoVenda, percentComissaoRecebto, compleEnderecoVendedor, endereco_idcep FROM vendedor WHERE idvendedor = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idvendedor, nomeVendedor, cpfVendedor, emailVendedor, foneVendedor, fone2Vendedor, percentComissaoVenda, percentComissaoRecebto, compleEnderecoVendedor, endereco_idcep FROM vendedor WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE vendedor SET nomeVendedor = ?, cpfVendedor = ?, emailVendedor = ?, foneVendedor = ?, fone2Vendedor = ?, percentComissaoVenda = ?, percentComissaoRecebto = ?, compleEnderecoVendedor = ?, endereco_idcep = ? WHERE idvendedor = ? ";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

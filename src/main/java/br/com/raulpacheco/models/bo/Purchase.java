@@ -1,8 +1,16 @@
 package br.com.raulpacheco.models.bo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class Purchase extends Model {
+@Entity
+@Table
+public class Purchase  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private int idProvider;
     private int paymentCondition;
@@ -105,35 +113,5 @@ public class Purchase extends Model {
     public Purchase setTotalValue(float totalValue) {
         this.totalValue = totalValue;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return null;
-    }
-
-    @Override
-    public String findAll() {
-        return null;
-    }
-
-    @Override
-    public String findById() {
-        return null;
-    }
-
-    @Override
-    public String findByField(String string) {
-        return null;
-    }
-
-    @Override
-    public String update() {
-        return null;
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

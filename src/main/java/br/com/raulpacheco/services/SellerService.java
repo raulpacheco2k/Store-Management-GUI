@@ -5,42 +5,9 @@ import br.com.raulpacheco.models.bo.Seller;
 
 import java.util.List;
 
-public class SellerService implements InterfaceService<Seller> {
+public class SellerService extends GenericService<Seller, SellerDAO> {
 
-    @Override
-    public void salvar(Seller objeto) {
-        SellerDAO model = new SellerDAO();
-        model.create(objeto);
+    public SellerService() {
+        super(new SellerDAO());
     }
-
-    @Override
-    public List<Seller> buscar() {
-        SellerDAO model = new SellerDAO();
-        return model.retrieve();
-    }
-
-    @Override
-    public Seller buscar(int codigo) {
-        SellerDAO model = new SellerDAO();
-        return model.retrieve(codigo);
-    }
-
-    @Override
-    public Seller buscar(String descricao) {
-        SellerDAO model = new SellerDAO();
-        return model.retrieve(descricao);
-    }
-
-    @Override
-    public void atualizar(Seller objeto) {
-        SellerDAO model = new SellerDAO();
-        model.update(objeto);
-    }
-
-    @Override
-    public void apagar(Seller objeto) {
-        SellerDAO model = new SellerDAO();
-        model.delete(objeto);
-    }
-
 }

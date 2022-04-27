@@ -1,6 +1,15 @@
 package br.com.raulpacheco.models.bo;
 
-public class ProductCharacteristics extends Model {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class ProductCharacteristics  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private int idProduct;
     private int idColor;
@@ -9,7 +18,6 @@ public class ProductCharacteristics extends Model {
     private float stock;
 
     public ProductCharacteristics() {
-        setTable("caracteristicaproduto");
     }
 
     public ProductCharacteristics(int id, int idProduct, int idColor, String size, String barCode, float stock) {
@@ -19,7 +27,6 @@ public class ProductCharacteristics extends Model {
         this.size = size;
         this.barCode = barCode;
         this.stock = stock;
-        setTable("caracteristicaproduto");
     }
 
     public int getId() {
@@ -74,35 +81,5 @@ public class ProductCharacteristics extends Model {
     public ProductCharacteristics setStock(float stock) {
         this.stock = stock;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO caracteristicaproduto (produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto) VALUES (?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto";
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto WHERE idCaracterisitcaProduto = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idCaracterisitcaProduto, produto_idproduto, cor_idcor, tamanhoProduto, barraProduto, qtdEstoqueProduto FROM caracteristicaproduto WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE caracteristicaproduto SET cor_idcor = ?, tamanhoProduto = ?, barraProduto = ?, qtdEstoqueProduto = ? WHERE idCaracterisitcaProduto = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

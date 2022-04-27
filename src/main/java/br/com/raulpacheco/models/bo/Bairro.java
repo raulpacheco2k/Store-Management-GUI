@@ -1,85 +1,51 @@
 package br.com.raulpacheco.models.bo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Entity
 @Table(name = "bairro")
-public class Bairro extends Model {
+public class Bairro {
     @Id
-    private int idBairro;
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @Column(name = "idbairro")
+    private int id;
 
-    @Column
-    private String descricaoBairro;
+    @Column(name = "descricaoBairro")
+    private String description;
 
     public Bairro() {
-        setTable("bairro");
     }
 
     public Bairro(ResultSet resultSet) throws SQLException {
         this.setIdBairro(resultSet.getInt("idBairro"));
         this.setDescricaoBairro(resultSet.getString("descricaoBairro"));
-        setTable("bairro");
     }
 
-    public Bairro(int idBairro, String descricaoBairro) {
-        this.idBairro = idBairro;
-        this.descricaoBairro = descricaoBairro;
-        setTable("bairro");
+    public Bairro(int idBairro, String description) {
+        this.id = idBairro;
+        this.description = description;
     }
 
     public int getIdBairro() {
-        return idBairro;
+        return id;
     }
 
     public void setIdBairro(int idBairro) {
-        this.idBairro = idBairro;
+        this.id = idBairro;
     }
 
     public String getDescricaoBairro() {
-        return descricaoBairro;
+        return description;
     }
 
-    public void setDescricaoBairro(String descricaoBairro) {
-        this.descricaoBairro = descricaoBairro;
+    public void setDescricaoBairro(String description) {
+        this.description = Bairro.this.description;
     }
 
     @Override
     public String toString() {
         return this.getDescricaoBairro();
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO " + getTable() + " (descricaoBairro) VALUES(?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idbairro, descricaoBairro FROM " + getTable();
-    }
-
-    @Override
-    public String findById() {
-        return " SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE idbairro = ?";
-    }
-
-    @Override
-    public String findByField(String field) {
-        return "SELECT idbairro, descricaoBairro FROM " + getTable() + " WHERE" + field + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + getTable() + " SET descricaoBairro = ? WHERE idbairro = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

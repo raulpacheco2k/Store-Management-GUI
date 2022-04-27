@@ -23,7 +23,7 @@ public class ControllerBusBairro implements ActionListener {
 
         BairroService bairroService = new BairroService();
 
-        for (Bairro bairro : bairroService.buscar()) {
+        for (Bairro bairro : bairroService.search()) {
             tabela.addRow(new Object[]{
                     bairro.getIdBairro(),
                     bairro.getDescricaoBairro()

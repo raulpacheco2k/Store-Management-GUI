@@ -56,10 +56,10 @@ public final class ControllerCadSize extends BaseController implements ActionLis
         model.setDescription(this.screen.getNome().getText());
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(model);
+            this.service.store(model);
         } else {
             model.setId(Integer.parseInt(this.screen.getId().getText()));
-            this.service.atualizar(model);
+            this.service.update(model);
         }
 
         creationState(this.screen, false);
@@ -72,7 +72,7 @@ public final class ControllerCadSize extends BaseController implements ActionLis
         searchScreen.setVisible(true);
 
         if (code != 0) {
-            Size model = this.service.buscar(code);
+            Size model = this.service.search(code);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

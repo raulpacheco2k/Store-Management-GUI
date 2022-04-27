@@ -1,17 +1,24 @@
 package br.com.raulpacheco.models.bo;
 
-public class PhoneProvider extends Model {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "fonefornecedor")
+public class PhoneProvider  {
+    @Id
+    @Column(name = "foneFornecedor")
     private String phone;
     private int provider;
 
     public PhoneProvider() {
-        setTable("foneFornecedor");
     }
 
     public PhoneProvider(String phone, int provider) {
         this.phone = phone;
         this.provider = provider;
-        setTable("foneFornecedor");
     }
 
     public String getPhone() {
@@ -31,34 +38,6 @@ public class PhoneProvider extends Model {
         this.provider = provider;
         return this;
     }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO " + this.getTable() + " (foneFornecedor, fornecedor_idfornecedor) VALUES (?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable();
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable() + " WHERE foneFornecedor = ?";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT foneFornecedor, fornecedor_idfornecedor FROM " + this.getTable() + " WHERE " + string + " = ?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE " + this.getTable() + " SET foneFornecedor = ? WHERE foneFornecedor = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
-    }
 }
+
+

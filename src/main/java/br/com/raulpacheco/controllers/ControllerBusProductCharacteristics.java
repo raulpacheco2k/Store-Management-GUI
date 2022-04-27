@@ -23,7 +23,7 @@ public class ControllerBusProductCharacteristics implements ActionListener {
 
         ProductCharacteristicsService cidadeService = new ProductCharacteristicsService();
 
-        for (ProductCharacteristics model : cidadeService.buscar()) {
+        for (ProductCharacteristics model : cidadeService.search()) {
             tabela.addRow(new Object[]{
                     model.getBarCode()
             });

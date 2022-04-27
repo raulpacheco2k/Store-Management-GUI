@@ -1,25 +1,17 @@
 package br.com.raulpacheco.models.bo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Entity
 @Table(name = "cidade")
 public final class Cidade {
-    @Column
-    private int idCidade;
-    @Column
-    private String descricaoCidade;
-    @Column
-    private String ufCidade;
-    @Column
-    private String table;
     @Id
-    private Long id;
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    private int idCidade;
+    private String descricaoCidade;
+    private String ufCidade;
 
     public Cidade() {
     }
@@ -65,11 +57,11 @@ public final class Cidade {
         return this.getDescricaoCidade();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(int id) {
+        this.idCidade = id;
     }
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return this.idCidade;
     }
 }

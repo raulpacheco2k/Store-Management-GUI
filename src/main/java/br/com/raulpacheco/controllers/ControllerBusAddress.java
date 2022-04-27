@@ -38,7 +38,7 @@ public class ControllerBusAddress implements ActionListener {
     }
 
     public void fillData() {
-        for (Endereco endereco : this.addressService.buscar()) {
+        for (Endereco endereco : this.addressService.search()) {
             this.table.addRow(new Object[]{
                     endereco.getIdCep(),
                     endereco.getCepCep(),

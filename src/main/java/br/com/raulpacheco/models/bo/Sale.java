@@ -1,16 +1,16 @@
-/*
- * Copyright (c) 2022.
- * Raul Pacheco Domingos (raulpacheco2k)
- * https://github.com/raulpacheco2k
- * https://linkedin.com/in/raulpacheco2k/
- * https://twitter.com/raulpacheco2k
- */
-
 package br.com.raulpacheco.models.bo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class Sale extends Model {
+@Entity
+@Table
+public class Sale  {
+    @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private int id;
     private String serie;
     private Date date;
@@ -126,35 +126,5 @@ public class Sale extends Model {
     public Sale setSeller_id(int seller_id) {
         this.seller_id = seller_id;
         return this;
-    }
-
-    @Override
-    public String insert() {
-        return "INSERT INTO venda (serieVenda, dtVenda, hrVenda, valDescontoVenda, valTotalVenda, cliente_idcliente, condicaoPagamento_idcondicaoPagamento, diaVencimentoParcela, vendedor_idvendedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    }
-
-    @Override
-    public String findAll() {
-        return "SELECT idvenda, serieVenda, dtVenda, hrVenda, valDescontoVenda, valTotalVenda, cliente_idcliente, condicaoPagamento_idcondicaoPagamento, diaVencimentoParcela, vendedor_idvendedor FROM venda";
-    }
-
-    @Override
-    public String findById() {
-        return "SELECT idvenda, serieVenda, dtVenda, hrVenda, valDescontoVenda, valTotalVenda, cliente_idcliente, condicaoPagamento_idcondicaoPagamento, diaVencimentoParcela, vendedor_idvendedor WHERE idvenda = ? ";
-    }
-
-    @Override
-    public String findByField(String string) {
-        return "SELECT idvenda, serieVenda, dtVenda, hrVenda, valDescontoVenda, valTotalVenda, cliente_idcliente, condicaoPagamento_idcondicaoPagamento, diaVencimentoParcela, vendedor_idvendedor WHERE " + string + "?";
-    }
-
-    @Override
-    public String update() {
-        return "UPDATE venda SET serieVenda = ?, dtVenda = ?, hrVenda = ?, valDescontoVenda = ?, valTotalVenda = ?, cliente_idcliente = ?, condicaoPagamento_idcondicaoPagamento = ?, diaVencimentoParcela = ?, vendedor_idvendedor = ?  idvenda = ?";
-    }
-
-    @Override
-    public String delete() {
-        return null;
     }
 }

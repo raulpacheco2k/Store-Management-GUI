@@ -81,16 +81,16 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         client.setFoneCliente(this.screen.getTelephone_1().getText());
         client.setFone2Cliente(this.screen.getTelephone_2().getText());
         client.setEmail(this.screen.getEmail().getText());
-        client.setEndereco(this.addressService.buscar(this.screen.getCep().getText()));
+        client.setEndereco(this.addressService.search(this.screen.getCep().getText()));
         client.setCompleEndereco(this.screen.getComplement().getText());
 
         ClientService clientService = new ClientService();
 
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            clientService.salvar(client);
+            clientService.store(client);
         } else {
             client.setIdCliente(Integer.parseInt(this.screen.getId().getText()));
-            clientService.atualizar(client);
+            clientService.update(client);
         }
 
         creationState(this.screen, false);
@@ -107,7 +107,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
         if (codigo != 0) {
             Client client;
             ClientService clientService = new ClientService();
-            client = clientService.buscar(codigo);
+            client = clientService.search(codigo);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);
@@ -122,7 +122,7 @@ public class ControllerCadCliente extends BaseController implements ActionListen
             this.screen.getComplement().setText(client.getCompleEndereco());
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             this.screen.getDateOfBirth().setText(format.format(client.getDtNasc()));
-            String cep = this.addressService.buscar(client.getIdEndereco()).getCepCep();
+            String cep = this.addressService.search(client.getIdEndereco()).getCepCep();
             this.screen.getCep().setText(cep);
             this.screen.getCep().setText(cep);
 

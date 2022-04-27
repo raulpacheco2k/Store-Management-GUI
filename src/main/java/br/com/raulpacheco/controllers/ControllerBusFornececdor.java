@@ -38,7 +38,7 @@ public class ControllerBusFornececdor implements ActionListener {
     }
 
     public void fillData() {
-        for (Fornecedor model : this.service.buscar()) {
+        for (Fornecedor model : this.service.search()) {
             this.table.addRow(new Object[]{
                     model.getIdFornecedor(),
                     model.getRazaoSocialFornecedor(),

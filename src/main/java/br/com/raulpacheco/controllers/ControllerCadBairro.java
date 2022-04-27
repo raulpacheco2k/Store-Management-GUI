@@ -55,10 +55,10 @@ public final class ControllerCadBairro extends BaseController implements ActionL
         bairro.setDescricaoBairro(this.screen.getNeighborhood().getText());
             
         if (this.screen.getId().getText().trim().equalsIgnoreCase("")) {
-            this.service.salvar(bairro);
+            this.service.store(bairro);
         } else {
             bairro.setIdBairro(Integer.parseInt(this.screen.getId().getText()));
-            this.service.atualizar(bairro);
+            this.service.update(bairro);
         }
 
         creationState(this.screen, false);
@@ -72,7 +72,7 @@ public final class ControllerCadBairro extends BaseController implements ActionL
         telaBusBairro.setVisible(true);
 
         if (codigo != 0) {
-            Bairro bairro = this.service.buscar(codigo);
+            Bairro bairro = this.service.search(codigo);
 
             creationState(this.screen, true);
             enableFieldsForCreation(this.screen, true);

@@ -21,16 +21,22 @@ public class BaseController {
     }
 
     public void enableFieldsForCreation(BaseMenuButtonsInterface screen, boolean estado) {
-        Component[] componentes = screen.getjPanelDados().getComponents();
-        for (Component componenteAtual : componentes) {
+        processComponents(screen.getjPanelDados(), estado);
+    }
+
+    private void processComponents(Container container, boolean estado) {
+        for (Component componenteAtual : container.getComponents()) {
             if (componenteAtual instanceof JTextField) {
                 ((JTextField) componenteAtual).setText("");
                 componenteAtual.setEnabled(estado);
             } else if (componenteAtual instanceof JComboBox) {
-                ((JComboBox) componenteAtual).setSelectedIndex(0);
+                ((JComboBox<?>) componenteAtual).setSelectedIndex(0);
                 componenteAtual.setEnabled(estado);
             } else if (componenteAtual instanceof JButton) {
                 componenteAtual.setEnabled(estado);
+            } else if (componenteAtual instanceof Container) {
+                // Recursively handle nested panels/containers
+                processComponents((Container) componenteAtual, estado);
             }
         }
     }
